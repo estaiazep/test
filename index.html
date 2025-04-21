@@ -3,295 +3,246 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Predict Bot — Игры и заработок</title>
+  <title>MINES HACK BOT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --red: #ff0033;
-      --pink: #ff6699;
-      --white: #ffffff;
-      --black: #000000;
-      --gray: #1a1a1a;
-      --gradient: linear-gradient(135deg, var(--red), var(--pink));
+      --neon-color: #00ffee;
+      --bg-dark: #0a0a0a;
+      --text-main: #ffffff;
+      --box-bg: #121212;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #000000;
-      color: var(--white);
-      text-align: center;
-      overflow-x: hidden;
+      font-family: 'Orbitron', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      scroll-behavior: smooth;
     }
-
     header {
-      padding: 60px 20px;
-      position: relative;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeIn 2s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      background: rgba(0,0,0,0.7);
-      padding: 40px 20px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 0, 100, 0.5);
-    }
-
-    .btn {
-      background: var(--gradient);
-      color: white;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 30px;
-      font-size: 16px;
-      margin-top: 20px;
-      text-decoration: none;
-      display: inline-block;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px rgba(255, 0, 100, 0.5);
-    }
-
-    input[type="text"], input[type="number"] {
-      width: 80%;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 10px;
-      font-size: 16px;
-      background: #2c2c2c;
-      border: none;
-      color: white;
-    }
-
-    .games-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 40px;
-      animation: slideIn 2s ease-out;
-    }
-
-    @keyframes slideIn {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .game {
-      background: var(--gray);
-      border-radius: 15px;
-      padding: 20px;
-      width: 260px;
-      box-shadow: 0 0 10px rgba(255, 0, 100, 0.4);
-      transition: 0.3s;
-    }
-
-    .game:hover {
-      transform: scale(1.05);
-    }
-
-    .game h3 {
-      margin-bottom: 10px;
-      color: var(--pink);
-    }
-
-    footer {
-      margin-top: 60px;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup-content {
-      background: #333;
-      padding: 30px;
-      border-radius: 20px;
+      background: radial-gradient(circle at center, #00ffee10, transparent 70%);
       text-align: center;
-      color: white;
+      padding: 80px 20px;
+      box-shadow: inset 0 0 30px #00ffee44;
     }
-
-    .close-popup {
-      position: absolute;
+    h1 {
+      font-size: 3.5em;
+      color: var(--neon-color);
+      text-shadow: 0 0 10px var(--neon-color);
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section-title {
+      color: var(--neon-color);
+      font-size: 2em;
+      margin-bottom: 25px;
+      text-shadow: 0 0 6px var(--neon-color);
+      border-bottom: 2px solid var(--neon-color);
+      display: inline-block;
+    }
+    .box {
+      background: var(--box-bg);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 25px #00ffee22;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: var(--neon-color);
+      color: #000;
+      padding: 15px 35px;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+      cursor: pointer;
+      font-size: 1.1em;
+      box-shadow: 0 0 10px var(--neon-color);
+    }
+    .btn:hover {
+      background: #00bbcc;
+    }
+    .btn:disabled {
+      background: #666;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    input[type="text"] {
+      padding: 12px;
+      font-size: 1em;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      text-align: center;
+      background: #1c1c1c;
+      color: var(--text-main);
+      box-shadow: 0 0 10px #00ffee55;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9em;
+      color: #888;
+    }
+    .lang-switcher {
+      position: fixed;
       top: 10px;
       right: 10px;
-      background: transparent;
-      color: white;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
+      z-index: 100;
     }
-
-    .popup-btn {
-      margin-top: 20px;
-      background: var(--pink);
+    .lang-switcher select {
+      background: #000;
+      color: var(--neon-color);
+      border: 1px solid var(--neon-color);
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .tabs {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
       padding: 10px 20px;
-      border-radius: 30px;
+      background: #1f1f1f;
+      border: 1px solid var(--neon-color);
+      color: var(--neon-color);
+      border-radius: 10px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s ease;
     }
-
-    .popup-btn:hover {
-      background: var(--red);
+    .tab-btn.active {
+      background: var(--neon-color);
+      color: #000;
     }
-
-    .contact-btn {
-      margin-top: 30px;
-      background: #25D366;
-      padding: 10px 20px;
-      border-radius: 30px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
     }
-
-    .contact-btn:hover {
-      background: #128C7E;
+    .tab-content.active {
+      display: block;
     }
-
-    @media(max-width: 600px) {
-      input[type="text"], input[type="number"] {
-        width: 100%;
-      }
-      .game {
-        width: 90%;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
+  <div class="lang-switcher">
+    <select>
+      <option value="ru">Русский</option>
+      <option value="th">ไทย</option>
+      <option value="vi">Tiếng Việt</option>
+    </select>
+  </div>
 
   <header>
-    <h1>Predict Bot</h1>
-    <p>Автоматический бот для заработка на играх 1xBet</p>
+    <h1>MINES HACK BOT</h1>
+    <p>Алгоритм, который взламывает игру MINES. Максимум — за вами 💸</p>
+    <button class="btn" onclick="showRegistrationStep()">Начать сейчас</button>
   </header>
 
-  <div class="container">
-    <h2>🔗 Регистрация</h2>
-    <p>1. Зарегистрируйся по ссылке</p>
-    <p>2. Используй промокод LUCKYBOT777</p>
-    <a href="https://affpa.top/L?tag=d_3301357m_97c_&site=3301357&ad=97&r=registration" class="btn" target="_blank">Регистрация в 1xBet</a>
-
-    <h2 style="margin-top: 40px;">🔐 Ввод ID</h2>
-    <p>2. Введи ID аккаунта после регистрации</p>
-    <form id="id-form" onsubmit="event.preventDefault(); showDeposit();">
-      <input type="text" id="user-id" placeholder="ID аккаунта">
-      <br>
-      <button class="btn" type="submit">Продолжить</button>
-    </form>
-
-    <!-- Этап депозита -->
-    <div id="deposit-step" style="display: none; margin-top: 40px; padding: 20px; background: rgba(0, 0, 0, 0.7); border-radius: 20px; box-shadow: 0 0 20px rgba(255, 0, 100, 0.5);">
-      <h2>💸 Депозит для начала работы</h2>
-      <p>Для начала работы с ботом необходимо внести депозит в размере <strong>5 USD</strong>.</p>
-
-      <div class="amount-box">
-        <h3>Сумма: 5 USD</h3>
-        <p>Это эквивалентно приблизительно <strong id="converted-amount">2,300 KZT</strong> по текущему курсу.</p>
-      </div>
-
-      <div class="currency-rate">
-        <label for="usd-rate">Курс валюты (1 USD = ... KZT):</label><br>
-        <input type="number" id="usd-rate" value="460" onchange="updateKZT()" min="1">
-      </div>
-
-      <button class="btn" onclick="window.location.href='https://t.me/your_bot'">Пополнить баланс</button>
+  <section class="box">
+    <div class="section-title">Информация</div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="openTab(event, 'bot')">О боте</button>
+      <button class="tab-btn" onclick="openTab(event, 'advantages')">Преимущества</button>
+      <button class="tab-btn" onclick="openTab(event, 'how')">Как работает</button>
+      <button class="tab-btn" onclick="openTab(event, 'limits')">Ограничения</button>
     </div>
-
-    <script>
-      function showDeposit() {
-        const userId = document.getElementById('user-id').value.trim();
-        if (!userId) {
-          alert("Пожалуйста, введите ID аккаунта!");
-          return;
-        }
-        document.getElementById('id-form').style.display = 'none';
-        document.getElementById('deposit-step').style.display = 'block';
-        updateKZT();
-      }
-
-      function updateKZT() {
-        const rate = parseFloat(document.getElementById("usd-rate").value);
-        const kztAmount = Math.round(rate * 5);
-        document.getElementById("converted-amount").innerText = kztAmount + " KZT";
-      }
-
-      function showPopup() {
-        document.getElementById('popup').style.display = 'flex';
-      }
-    </script>
-
-    <h2 style="margin-top: 50px;">🎮 Доступные игры</h2>
-    <div class="games-grid">
-      <div class="game">
-        <h3>Mines Hack</h3>
-        <p>Сигналы на игру Mines с точностью 85%</p>
-      </div>
-      <div class="game">
-        <h3>Predict Bot</h3>
-        <p>Алгоритм на базе ИИ для прогнозов</p>
-      </div>
-      <div class="game">
-        <h3>1xBet Автоматизация</h3>
-        <p>Простая схема заработка на платформе</p>
-      </div>
+    <div id="bot" class="tab-content active">
+      <p><b>MINES HACK BOT</b> — это интеллектуальный алгоритм, разработанный для точного предсказания безопасных клеток в игре MINES. Основан на анализе исторических данных, паттернов поведения и случайных чисел. Не требует знаний или опыта.</p>
     </div>
+    <div id="advantages" class="tab-content">
+      <ul>
+        <li>🎯 Высокая точность — до 90% успешных ходов</li>
+        <li>🚀 Быстрый старт — достаточно 5$ на балансе</li>
+        <li>🔐 Приватный доступ — доступ ограничен</li>
+        <li>📈 Гарантированный рост капитала при дисциплине</li>
+      </ul>
+    </div>
+    <div id="how" class="tab-content">
+      <ol>
+        <li>Проходишь регистрацию и указываешь промокод <b>LuckyBot777</b></li>
+        <li>Создаёшь аккаунт и получаешь ID</li>
+        <li>Вводишь ID на сайте</li>
+        <li>Пополняешь аккаунт минимум на 5$</li>
+        <li>Запускается бот, ты получаешь подсказки в реальном времени</li>
+      </ol>
+    </div>
+    <div id="limits" class="tab-content">
+      <p>Мы принимаем только 50 новых пользователей в неделю. Это необходимо для того, чтобы алгоритм работал стабильно и не был раскрыт системой.</p>
+    </div>
+  </section>
 
-    <h2 style="margin-top: 50px;">🔥 Преимущества</h2>
-    <p>📈 Доход от 500.000 KZT в день</p>
-    <p>🤖 Стабильные сигналы каждый день</p>
-    <p>💸 Без рисков и сложностей</p>
-    <p>💬 Поддержка 24/7</p>
+  <section class="box" id="regStep" style="display:none">
+    <div class="section-title">Регистрация</div>
+    <p>При регистрации используй промокод: <b>LuckyBot777</b></p>
+    <p>После регистрации введи свой ID ниже:</p>
+    <input type="text" id="userID" placeholder="Введи ID от аккаунта" disabled>
+    <button class="btn" onclick="unlockInput()">Я зарегистрировался</button>
+    <button class="btn" id="continueBtn" onclick="showDepositStep()" disabled>Продолжить</button>
+  </section>
 
-    <button class="btn" onclick="showPopup()">Получить больше информации</button>
-
-    <a href="https://t.me/ThanawatOfficial" class="contact-btn" target="_blank">Написать в Telegram</a>
-  </div>
+  <section class="box" id="depositStep" style="display:none">
+    <div class="section-title">Пополнение</div>
+    <p>Для запуска алгоритма на аккаунте необходимо пополнить баланс минимум на <b>5$</b></p>
+    <a class="btn" href="https://t.me/YOUR_BOT" target="_blank">Пополнить</a>
+  </section>
 
   <footer>
-    <p>© 2025 Predict Bot | Все права защищены</p>
+    © 2025 MINES HACK BOT. Все права защищены. Контакты: @your_admin
   </footer>
 
-  <!-- Popup -->
-  <div class="popup" id="popup">
-    <div class="popup-content">
-      <button class="close-popup" onclick="document.getElementById('popup').style.display = 'none'">×</button>
-      <h2>Дополнительная информация</h2>
-      <p>Здесь будет дополнительная информация о боте и процессе работы.</p>
-      <button class="popup-btn" onclick="document.getElementById('popup').style.display = 'none'">Закрыть</button>
-    </div>
-  </div>
+  <script>
+    function showRegistrationStep() {
+      document.getElementById('regStep').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('regStep').offsetTop, behavior: 'smooth' });
+    }
 
+    function unlockInput() {
+      const input = document.getElementById('userID');
+      const button = document.getElementById('continueBtn');
+      input.disabled = false;
+      input.focus();
+      input.addEventListener('input', () => {
+        button.disabled = input.value.trim() === '';
+      });
+    }
+
+    function showDepositStep() {
+      document.getElementById('depositStep').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('depositStep').offsetTop, behavior: 'smooth' });
+    }
+
+    function openTab(evt, tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      const buttons = document.querySelectorAll('.tab-btn');
+
+      tabs.forEach(tab => tab.classList.remove('active'));
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+  </script>
 </body>
 </html>
