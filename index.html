@@ -1,248 +1,124 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="h-full bg-gray-50 scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MINES HACK BOT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --neon-color: #00ffee;
-      --bg-dark: #0a0a0a;
-      --text-main: #ffffff;
-      --box-bg: #121212;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-main);
-      scroll-behavior: smooth;
-    }
-    header {
-      background: radial-gradient(circle at center, #00ffee10, transparent 70%);
-      text-align: center;
-      padding: 80px 20px;
-      box-shadow: inset 0 0 30px #00ffee44;
-    }
-    h1 {
-      font-size: 3.5em;
-      color: var(--neon-color);
-      text-shadow: 0 0 10px var(--neon-color);
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2em;
-      line-height: 1.6;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .section-title {
-      color: var(--neon-color);
-      font-size: 2em;
-      margin-bottom: 25px;
-      text-shadow: 0 0 6px var(--neon-color);
-      border-bottom: 2px solid var(--neon-color);
-      display: inline-block;
-    }
-    .box {
-      background: var(--box-bg);
-      border-radius: 20px;
-      padding: 30px;
-      margin-bottom: 40px;
-      box-shadow: 0 0 25px #00ffee22;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      background: var(--neon-color);
-      color: #000;
-      padding: 15px 35px;
-      border-radius: 10px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-      cursor: pointer;
-      font-size: 1.1em;
-      box-shadow: 0 0 10px var(--neon-color);
-    }
-    .btn:hover {
-      background: #00bbcc;
-    }
-    .btn:disabled {
-      background: #666;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-    input[type="text"] {
-      padding: 12px;
-      font-size: 1em;
-      width: 100%;
-      margin-top: 20px;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      text-align: center;
-      background: #1c1c1c;
-      color: var(--text-main);
-      box-shadow: 0 0 10px #00ffee55;
-    }
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 0.9em;
-      color: #888;
-    }
-    .lang-switcher {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 100;
-    }
-    .lang-switcher select {
-      background: #000;
-      color: var(--neon-color);
-      border: 1px solid var(--neon-color);
-      padding: 5px;
-      border-radius: 5px;
-    }
-    .tabs {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .tab-btn {
-      padding: 10px 20px;
-      background: #1f1f1f;
-      border: 1px solid var(--neon-color);
-      color: var(--neon-color);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .tab-btn.active {
-      background: var(--neon-color);
-      color: #000;
-    }
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.5s ease forwards;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-  <div class="lang-switcher">
-    <select>
-      <option value="ru">Русский</option>
-      <option value="th">ไทย</option>
-      <option value="vi">Tiếng Việt</option>
-    </select>
-  </div>
-
-  <header>
-    <h1>MINES HACK BOT</h1>
-    <p>Алгоритм, который взламывает игру MINES. Максимум — за вами 💸</p>
-    <button class="btn" onclick="showRegistrationStep()">Начать сейчас</button>
-  </header>
-
-  <section class="box">
-    <div class="section-title">Информация</div>
-    <div class="tabs">
-      <button class="tab-btn active" onclick="openTab(event, 'bot')">О боте</button>
-      <button class="tab-btn" onclick="openTab(event, 'advantages')">Преимущества</button>
-      <button class="tab-btn" onclick="openTab(event, 'how')">Как работает</button>
-      <button class="tab-btn" onclick="openTab(event, 'limits')">Ограничения</button>
-    </div>
-    <div id="bot" class="tab-content active">
-      <p><b>MINES HACK BOT</b> — это интеллектуальный алгоритм, разработанный для точного предсказания безопасных клеток в игре MINES. Основан на анализе исторических данных, паттернов поведения и случайных чисел. Не требует знаний или опыта.</p>
-    </div>
-    <div id="advantages" class="tab-content">
-      <ul>
-        <li>🎯 Высокая точность — до 90% успешных ходов</li>
-        <li>🚀 Быстрый старт — достаточно 5$ на балансе</li>
-        <li>🔐 Приватный доступ — доступ ограничен</li>
-        <li>📈 Гарантированный рост капитала при дисциплине</li>
-      </ul>
-    </div>
-    <div id="how" class="tab-content">
-      <ol>
-        <li>Проходишь регистрацию и указываешь промокод <b>LuckyBot777</b></li>
-        <li>Создаёшь аккаунт и получаешь ID</li>
-        <li>Вводишь ID на сайте</li>
-        <li>Пополняешь аккаунт минимум на 5$</li>
-        <li>Запускается бот, ты получаешь подсказки в реальном времени</li>
-      </ol>
-    </div>
-    <div id="limits" class="tab-content">
-      <p>Мы принимаем только 50 новых пользователей в неделю. Это необходимо для того, чтобы алгоритм работал стабильно и не был раскрыт системой.</p>
-    </div>
-  </section>
-
-  <section class="box" id="regStep" style="display:none">
-    <div class="section-title">Регистрация</div>
-    <p>При регистрации используй промокод: <b>LuckyBot777</b></p>
-    <p>После регистрации введи свой ID ниже:</p>
-    <input type="text" id="userID" placeholder="Введи ID от аккаунта" disabled>
-    <button class="btn" onclick="unlockInput()">Я зарегистрировался</button>
-    <button class="btn" id="continueBtn" onclick="showDepositStep()" disabled>Продолжить</button>
-  </section>
-
-  <section class="box" id="depositStep" style="display:none">
-    <div class="section-title">Пополнение</div>
-    <p>Для запуска алгоритма на аккаунте необходимо пополнить баланс минимум на <b>5$</b></p>
-    <a class="btn" href="https://t.me/YOUR_BOT" target="_blank">Пополнить</a>
-  </section>
-
-  <footer>
-    © 2025 MINES HACK BOT. Все права защищены. Контакты: @your_admin
-  </footer>
-
+  <title>MyGov.uz — Проверка права на жильё</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    function showRegistrationStep() {
-      document.getElementById('regStep').style.display = 'block';
-      window.scrollTo({ top: document.getElementById('regStep').offsetTop, behavior: 'smooth' });
-    }
-
-    function unlockInput() {
-      const input = document.getElementById('userID');
-      const button = document.getElementById('continueBtn');
-      input.disabled = false;
-      input.focus();
-      input.addEventListener('input', () => {
-        button.disabled = input.value.trim() === '';
-      });
-    }
-
-    function showDepositStep() {
-      document.getElementById('depositStep').style.display = 'block';
-      window.scrollTo({ top: document.getElementById('depositStep').offsetTop, behavior: 'smooth' });
-    }
-
-    function openTab(evt, tabId) {
-      const tabs = document.querySelectorAll('.tab-content');
-      const buttons = document.querySelectorAll('.tab-btn');
-
-      tabs.forEach(tab => tab.classList.remove('active'));
-      buttons.forEach(btn => btn.classList.remove('active'));
-
-      document.getElementById(tabId).classList.add('active');
-      evt.currentTarget.classList.add('active');
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            'fade-in': 'fadeIn 1s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0 },
+              '100%': { opacity: 1 },
+            },
+          }
+        }
+      }
     }
   </script>
+</head>
+<body class="h-full flex flex-col">
+
+  <!-- Хедер -->
+  <header class="bg-green-600 text-white py-6 shadow-md">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <div class="flex items-center space-x-4">
+        <img src="logo.png" alt="Логотип" class="w-12 h-12 rounded-lg bg-white p-1">
+        <h1 class="text-2xl font-bold">MyGov.uz</h1>
+      </div>
+      <a href="#contact" class="bg-white text-green-700 font-semibold py-2 px-4 rounded-lg hover:bg-gray-100 transition hidden md:block">Поддержка</a>
+    </div>
+  </header>
+
+  <!-- Главный блок -->
+  <section class="bg-white py-20 shadow-inner animate-fade-in">
+    <div class="container mx-auto text-center space-y-6 px-6">
+      <h2 class="text-4xl font-extrabold text-green-700">Проверь своё право на бесплатное жильё</h2>
+      <p class="text-gray-600 text-lg">Быстрое подтверждение за 2 минуты. Бесплатно.</p>
+      <div class="max-w-md mx-auto mt-8 space-y-4">
+        <input type="text" placeholder="Введите ИИН или паспорт" class="w-full p-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-400 focus:outline-none">
+        <button onclick="openModal()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition">Проверить сейчас</button>
+      </div>
+      <p class="text-gray-500 text-sm mt-4">Ваши данные защищены. Проверка без регистрации.</p>
+    </div>
+  </section>
+
+  <!-- Почему стоит проверить -->
+  <section class="container mx-auto py-20 grid md:grid-cols-3 gap-10 text-center px-6">
+    <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition">
+      <div class="text-5xl mb-4">✅</div>
+      <h3 class="text-2xl font-bold text-green-700 mb-2">Официальная программа</h3>
+      <p class="text-gray-600">Работаем при поддержке государственных органов.</p>
+    </div>
+    <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition">
+      <div class="text-5xl mb-4">🔒</div>
+      <h3 class="text-2xl font-bold text-green-700 mb-2">Безопасность данных</h3>
+      <p class="text-gray-600">Все ваши данные защищены шифрованием SSL.</p>
+    </div>
+    <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition">
+      <div class="text-5xl mb-4">🚀</div>
+      <h3 class="text-2xl font-bold text-green-700 mb-2">Быстрая проверка</h3>
+      <p class="text-gray-600">Ответ за 2 минуты без очередей и ожидания.</p>
+    </div>
+  </section>
+
+  <!-- Отзывы -->
+  <section class="bg-gray-100 py-20">
+    <div class="container mx-auto text-center space-y-12 px-6">
+      <h2 class="text-3xl font-bold text-green-700">Истории успеха</h2>
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition">
+          <p class="text-gray-700 mb-4">"Не верила, но всё получилось! Проверила — через месяц получила ключи от квартиры!"</p>
+          <div class="text-green-600 font-bold">— Мария Т., Самарканд</div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition">
+          <p class="text-gray-700 mb-4">"Спасибо MyGov.uz за быструю проверку. Без лишней бюрократии!"</p>
+          <div class="text-green-600 font-bold">— Тимур Б., Ташкент</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Поддержка -->
+  <section id="contact" class="bg-green-600 py-16 text-white text-center">
+    <h2 class="text-3xl font-bold mb-4">Нужна помощь?</h2>
+    <p class="mb-6 text-lg">Наши консультанты готовы ответить на ваши вопросы.</p>
+    <a href="https://t.me/your_bot" target="_blank" class="bg-white text-green-700 font-bold py-3 px-6 rounded-xl hover:bg-gray-100 transition">
+      Перейти в Telegram Бот
+    </a>
+  </section>
+
+  <!-- Футер -->
+  <footer class="bg-white text-center text-gray-400 py-6 text-sm">
+    © 2025 MyGov.uz · Все права защищены
+  </footer>
+
+  <!-- Модалка -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-80 text-center relative">
+      <button onclick="closeModal()" class="absolute top-2 right-4 text-2xl text-gray-500">&times;</button>
+      <h3 class="text-xl font-bold text-green-700 mb-4">Идёт проверка...</h3>
+      <p class="text-gray-600">Пожалуйста, подождите несколько секунд...</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('modal').classList.remove('hidden');
+      setTimeout(() => {
+        window.location.href = "https://t.me/your_bot";
+      }, 2000);
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+  </script>
+
 </body>
 </html>
