@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Платформа для получения бесплатного жилья от государства Узбекистана через MyGov.uz">
+  <meta name="author" content="MyGov.uz">
+  <link rel="canonical" href="https://mygov.uz">
   <title>MyGov.uz — Бесплатное жильё от государства</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,11 +23,9 @@
           },
           animation: {
             'fade-in': 'fadeIn 1s ease-out',
-            'slide-up': 'slideUp 1s ease-out',
           },
           keyframes: {
-            fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
-            slideUp: { '0%': { transform: 'translateY(20px)', opacity: 0 }, '100%': { transform: 'translateY(0)', opacity: 1 } },
+            fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } }
           }
         }
       }
@@ -38,7 +40,7 @@
 <body class="h-full flex flex-col bg-gray-50 font-sans">
 
   <!-- Верхний баннер -->
-  <div class="bg-green-100 text-green-800 py-2 text-center text-sm">
+  <div class="bg-primary text-white py-2 text-center text-sm animate-fade-in">
     Сегодня оформлено квартир: <span id="counter" class="counter">342</span>
   </div>
 
@@ -49,18 +51,12 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Coat_of_arms_of_Uzbekistan.svg/512px-Coat_of_arms_of_Uzbekistan.svg.png" alt="Герб" class="w-10 h-10">
         <div>
           <h1 class="text-xl font-bold text-primary">MyGov.uz</h1>
-          <p class="text-xs text-gray-500">Единый государственный портал</p>
+          <p class="text-xs text-gray-500">Государственный портал</p>
         </div>
       </div>
       <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
         <a href="#about" class="hover:text-primary">О программе</a>
-        <a href="#stories" class="hover:text-primary">Истории</a>
         <a href="#conditions" class="hover:text-primary">Условия</a>
-        <a href="#documents" class="hover:text-primary">Документы</a>
-        <a href="#guarantees" class="hover:text-primary">Гарантии</a>
-        <a href="#gallery" class="hover:text-primary">Фотографии</a>
-        <a href="#reports" class="hover:text-primary">Отчётность</a>
-        <a href="#news" class="hover:text-primary">Новости</a>
         <a href="#faq" class="hover:text-primary">FAQ</a>
         <a href="#contact" class="hover:text-primary">Контакты</a>
       </nav>
@@ -73,7 +69,7 @@
     <!-- Приветствие -->
     <section class="text-center space-y-6 mt-8 animate-fade-in">
       <h2 class="text-4xl font-bold text-primary">Бесплатное жильё от государства</h2>
-      <p class="text-gray-600 text-lg">Проверьте своё право за 2 минуты</p>
+      <p class="text-gray-600 text-lg">Проверьте своё право за 2 минуты без очередей</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
         <input id="iinInput" type="text" placeholder="Введите ваш ИИН" class="border p-3 rounded-lg w-64 focus:outline-none focus:ring-2 focus:ring-accent">
         <button onclick="startCheck()" class="bg-primary hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition-transform hover:scale-105 shadow-lg">
@@ -87,23 +83,8 @@
       <div class="bg-white p-8 rounded-2xl shadow-lg space-y-6">
         <h3 class="text-3xl font-bold text-primary">О программе</h3>
         <p class="text-gray-700 leading-relaxed">
-          Государственная инициатива по поддержке нуждающихся граждан через предоставление бесплатного жилья.
+          Государственная программа по обеспечению бесплатным жильём социально незащищённых граждан Узбекистана через цифровую платформу MyGov.uz.
         </p>
-      </div>
-    </section>
-
-    <!-- Истории -->
-    <section id="stories" class="w-full">
-      <h3 class="text-3xl font-bold text-primary mb-6">Истории успеха</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-2xl shadow-md space-y-4 hover:shadow-xl transition">
-          <h4 class="text-2xl text-primary font-semibold">Семья Салимовых</h4>
-          <p class="text-gray-600">“Через месяц получили ключи от новой квартиры!”</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow-md space-y-4 hover:shadow-xl transition">
-          <h4 class="text-2xl text-primary font-semibold">Гульнора из Ташкента</h4>
-          <p class="text-gray-600">“Заполнила заявку ночью — утром уже была одобрена!”</p>
-        </div>
       </div>
     </section>
 
@@ -113,73 +94,28 @@
         <h3 class="text-3xl font-bold text-primary">Условия участия</h3>
         <ul class="list-disc list-inside text-gray-700 space-y-2">
           <li>Гражданство Республики Узбекистан</li>
-          <li>Постоянная регистрация на территории РУз</li>
-          <li>Приоритет: многодетные семьи, социально уязвимые группы</li>
-          <li>Отсутствие в собственности жилья</li>
+          <li>Постоянная регистрация</li>
+          <li>Приоритет многодетным и малообеспеченным семьям</li>
+          <li>Отсутствие другого жилья в собственности</li>
         </ul>
       </div>
     </section>
 
-    <!-- Документы -->
-    <section id="documents" class="w-full">
-      <h3 class="text-3xl font-bold text-primary mb-6">Документы официальности</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-4 rounded-lg shadow-md text-center">
-          <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Постановление" class="w-16 h-16 mx-auto mb-4">
-          <p class="text-gray-700 font-medium">Постановление Кабмина №123</p>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md text-center">
-          <img src="https://cdn-icons-png.flaticon.com/512/3182/3182798.png" alt="Лицензия" class="w-16 h-16 mx-auto mb-4">
-          <p class="text-gray-700 font-medium">Лицензия №5678/2025</p>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md text-center">
-          <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="Сертификаты" class="w-16 h-16 mx-auto mb-4">
-          <p class="text-gray-700 font-medium">Сертификаты ISO</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Юридические гарантии -->
-    <section id="guarantees" class="w-full">
+    <!-- FAQ -->
+    <section id="faq" class="w-full">
       <div class="bg-white p-8 rounded-2xl shadow-lg space-y-6">
-        <h3 class="text-3xl font-bold text-primary">Юридические гарантии</h3>
-        <p class="text-gray-700">Программа действует на основании Постановления Кабинета Министров и регулируется законодательством Республики Узбекистан. Все персональные данные граждан защищены по закону.</p>
+        <h3 class="text-3xl font-bold text-primary">Часто задаваемые вопросы</h3>
+        <div class="space-y-4">
+          <div>
+            <h4 class="font-semibold text-lg text-primary">Кто может участвовать?</h4>
+            <p class="text-gray-700">Граждане, находящиеся в списках нуждающихся и отвечающие установленным критериям.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg text-primary">Как подать заявку?</h4>
+            <p class="text-gray-700">Через проверку ИИН на данной платформе с последующим заполнением заявки.</p>
+          </div>
+        </div>
       </div>
-    </section>
-
-    <!-- Галерея -->
-    <section id="gallery" class="w-full">
-      <h3 class="text-3xl font-bold text-primary mb-6">Фотографии реальных квартир</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="rounded-lg shadow-md hover:scale-105 transition" alt="Квартира 1">
-        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="rounded-lg shadow-md hover:scale-105 transition" alt="Квартира 2">
-        <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="rounded-lg shadow-md hover:scale-105 transition" alt="Квартира 3">
-      </div>
-    </section>
-
-    <!-- Публичная отчётность -->
-    <section id="reports" class="w-full">
-      <h3 class="text-3xl font-bold text-primary mb-6">Публичная отчётность</h3>
-      <div class="bg-white p-8 rounded-2xl shadow-lg">
-        <table class="w-full table-auto text-left">
-          <thead>
-            <tr class="text-primary">
-              <th>Регион</th><th>Выдано квартир</th><th>В процессе оформления</th>
-            </tr>
-          </thead>
-          <tbody class="text-gray-700">
-            <tr><td>Ташкент</td><td>3240</td><td>870</td></tr>
-            <tr><td>Самарканд</td><td>1980</td><td>460</td></tr>
-            <tr><td>Андижан</td><td>1560</td><td>300</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Блок новостей -->
-    <section id="news" class="w-full">
-      <h3 class="text-3xl font-bold text-primary mb-6">Новости программы</h3>
-      <div id="newsBlock" class="bg-white p-8 rounded-2xl shadow-lg space-y-4"></div>
     </section>
 
     <!-- Контакты -->
@@ -196,7 +132,7 @@
 
   <!-- Футер -->
   <footer class="text-center text-gray-400 text-sm py-6">
-    © 2025 MyGov.uz — Все права защищены | Обновлено: апрель 2025
+    © 2025 MyGov.uz — Все права защищены
   </footer>
 
   <!-- Скрипты -->
@@ -207,7 +143,7 @@
         alert('Пожалуйста, введите корректный ИИН.');
         return;
       }
-      window.location.href = "https://t.me/your_bot";
+      window.location.href = "https://t.me/your_bot"; // Перенаправление после проверки
     }
 
     // Счётчик квартир
@@ -215,20 +151,6 @@
     setInterval(() => {
       counter.innerText = parseInt(counter.innerText) + Math.floor(Math.random() * 3);
     }, 5000);
-
-    // Рандомные новости
-    const newsList = [
-      "🏠 Введён в эксплуатацию новый жилой комплекс в Ташкенте!",
-      "✅ Программа продлена до 2026 года.",
-      "🎉 Уже 10 000 семей получили квартиры через MyGov.uz!",
-      "📢 Новый список очередников опубликован сегодня."
-    ];
-    function updateNews() {
-      const newsBlock = document.getElementById('newsBlock');
-      newsBlock.innerHTML = `<p class="text-gray-700">${newsList[Math.floor(Math.random() * newsList.length)]}</p>`;
-    }
-    updateNews();
-    setInterval(updateNews, 3600000); // Обновлять каждую 1 час
   </script>
 
 </body>
