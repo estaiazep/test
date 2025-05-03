@@ -97,27 +97,27 @@
       background: linear-gradient(120deg, #003366 0%, #002244 100%);
       color: var(--white);
     }
+
     .percent-circle {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 6px solid #e0e0e0;
-  border-top: 6px solid #28a745;
-  animation: spin 1.2s linear infinite;
-  margin: 0 auto;
-  position: relative;
-}
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 6px solid #e0e0e0;
+      border-top: 6px solid #28a745;
+      animation: spin 1.2s linear infinite;
+      margin: 0 auto;
+      position: relative;
+    }
 
-.percent-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 16px;
-  color: #003366;
-  font-weight: bold;
-}
-
+    .percent-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      color: #003366;
+      font-weight: bold;
+    }
 
     .hero h1 {
       font-size: 36px;
@@ -148,22 +148,22 @@
     }
 
     .cta-btn {
-  background-color: var(--accent);
-  color: white;
-  padding: 14px 32px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.2s ease;
-}
+      background-color: var(--accent);
+      color: white;
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.2s ease;
+    }
 
-.cta-btn:hover {
-  background-color: #1e7e34;
-  transform: scale(1.03);
-}
+    .cta-btn:hover {
+      background-color: #1e7e34;
+      transform: scale(1.03);
+    }
 
     @media (max-width: 768px) {
       nav ul {
@@ -192,7 +192,7 @@
   </style>
 </head>
 <body>
-
+<!-- Продолжение HTML и секций сайта будет во 2 части -->
 <header>
   <div class="logo">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Emblem_of_Uzbekistan.svg/64px-Emblem_of_Uzbekistan.svg.png" alt="Uzbek Emblem">
@@ -254,36 +254,17 @@
     </div>
   </div>
 </section>
-
 <!-- Проверка права -->
 <section id="check" style="background-color: #ffffff; padding: 80px 20px;">
   <div style="max-width: 720px; margin: 0 auto; text-align: center;">
     <h2 style="font-size: 28px; color: #003366; margin-bottom: 24px;">Проверка права на жильё</h2>
     <p style="font-size: 16px; color: #555; margin-bottom: 24px;">Введите ваш ИИН и узнайте, имеете ли вы право на участие в программе.</p>
     <button class="cta-btn" onclick="openModal()">🔍 Проверить</button>
-    <!-- Модальное окно проверки статуса заявки -->
-<div id="modal-status" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
-  <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:400px; position:relative;">
-    <button onclick="closeFaqModal('modal-status')" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">✖</button>
-    <h3 style="color:#003366;">Введите номер заявки</h3>
-    <input type="text" id="status-id" placeholder="Например: UZ-12345" style="width:100%; padding:12px; margin-top:10px; border-radius:8px; border:1px solid #ccc;">
-    <button class="cta-btn" style="margin-top:16px;" onclick="checkStatus()">🔍 Проверить</button>
-
-    <!-- Анимация процентов -->
-    <div id="status-loader" style="display:none; margin-top:16px; text-align:center;">
-      <div class="percent-circle">
-        <div id="status-percent" class="percent-text">0%</div>
-      </div>
-      <p style="margin-top:12px; font-size:14px; color:#555;">Проверка заявки…</p>
-    </div>
-
-    <div id="status-message" style="display:none; font-size:16px; font-weight:600; margin-top:16px; text-align:center;"></div>
-  </div>
-</div>
-
+    <button class="cta-btn" style="margin-top: 12px;" onclick="openFaqModal('modal-status')">📄 Проверить статус заявки</button>
     <p style="margin-top: 10px; font-size: 14px; color: #777;">Не требует регистрации</p>
   </div>
 </section>
+
 <!-- Кнопка проверить статус заявки -->
 <div id="status-result" style="margin-top: 20px; text-align: center;">
   <div id="status-loader" style="display: none;">
@@ -332,16 +313,14 @@
     </div>
   </div>
 </section>
+
 <!-- Модальное окно -->
 <div id="modal-check" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
   <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:400px; position:relative; box-shadow: 0 6px 20px rgba(0,0,0,0.2);">
     <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">✖</button>
     <h3 style="margin-bottom:10px; color: #003366;">Введите ИИН</h3>
-    <input type="text" id="iin" maxlength="14" placeholder="12345678901234"
-      style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
-    <button onclick="checkIIN()" style="width:100%; background-color: #28a745; color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">
-      🔍 Проверить
-    </button>
+    <input type="text" id="iin" maxlength="14" placeholder="12345678901234" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
+    <button onclick="checkIIN()" style="width:100%; background-color: #28a745; color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">🔍 Проверить</button>
     <div id="result-check" style="margin-top: 20px; text-align: center;">
       <div id="loader" style="display:none;">
         <div style="border: 4px solid #e0e0e0; border-top: 4px solid #28a745; border-radius: 50%; width: 36px; height: 36px; margin: 0 auto; animation: spin 1s linear infinite;"></div>
@@ -349,6 +328,15 @@
       </div>
       <div id="response-message" style="display:none; font-size:16px; font-weight:600;"></div>
     </div>
+  </div>
+</div>
+<!-- Модальное окно проверки статуса -->
+<div id="modal-status" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:400px; position:relative; box-shadow: 0 6px 20px rgba(0,0,0,0.2);">
+    <button onclick="closeFaqModal('modal-status')" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">✖</button>
+    <h3 style="margin-bottom:10px; color: #003366;">Введите номер заявки</h3>
+    <input type="text" id="status-id" placeholder="UZ-12345" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
+    <button onclick="checkStatus()" style="width:100%; background-color: #28a745; color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">📄 Проверить статус</button>
   </div>
 </div>
 
@@ -360,16 +348,13 @@
     <p style="font-size: 16px; color: #555;">💬 Telegram-бот: <a href="https://t.me/MyGovUzRasmiy_bot" target="_blank" style="color: #28a745; text-decoration: underline;">@MyGovUzRasmiy_bot</a></p>
   </div>
 </section>
-  
+
 <section style="background:#fff; padding:50px 20px; text-align:center;">
   <h2 style="color:#003366;">Безопасность и конфиденциальность</h2>
   <p style="color:#555; max-width:700px; margin:10px auto;">Все данные обрабатываются в соответствии с законодательством Республики Узбекистан. Используется защищённое соединение (SSL), персональная информация не передаётся третьим лицам.</p>
-  <div style="margin-top:20px; font-size:24px; color:#28a745;">
-    🔒 🛡️ 📁
-  </div>
+  <div style="margin-top:20px; font-size:24px; color:#28a745;">🔒 🛡️ 📁</div>
 </section>
 
-<!-- Футер -->
 <footer style="background-color: #003366; color: #ffffff; text-align: center; padding: 30px 20px;">
   <p style="font-size: 14px;">© 2025 MyGov.uz — Официальная цифровая платформа Республики Узбекистан</p>
   <p style="font-size: 14px; margin-top: 8px;">
@@ -394,43 +379,16 @@
     document.getElementById("loader").style.display = "none";
     document.getElementById("iin").value = "";
   }
-function checkStatus() {
-  const id = document.getElementById("status-id").value.trim();
-  const loader = document.getElementById("status-loader");
-  const message = document.getElementById("status-message");
-  const percentEl = document.getElementById("status-percent");
 
-  loader.style.display = "none";
-  message.style.display = "none";
-  message.innerHTML = "";
-  percentEl.innerText = "0%";
-
-  const regex = /^UZ-\d{5,}$/;
-
-  if (!regex.test(id)) {
-    message.style.display = "block";
-    message.style.color = "red";
-    message.innerHTML = "❌ Неверный формат номера заявки.";
-    return;
+  function openFaqModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) modal.style.display = "flex";
   }
 
-  loader.style.display = "block";
-
-  let percent = 0;
-  const interval = setInterval(() => {
-    percent += Math.floor(Math.random() * 10) + 1;
-    if (percent > 100) percent = 100;
-    percentEl.innerText = percent + "%";
-
-    if (percent === 100) {
-      clearInterval(interval);
-      loader.style.display = "none";
-      message.style.display = "block";
-      message.style.color = "green";
-      message.innerHTML = "✅ Ваша заявка в обработке. Спасибо!";
-    }
-  }, 200);
-}
+  function closeFaqModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) modal.style.display = "none";
+  }
 
   function checkIIN() {
     const input = document.getElementById("iin").value.trim();
@@ -447,15 +405,6 @@ function checkStatus() {
       message.innerHTML = "❌ Введите корректный ИИН";
       return;
     }
-    function openFaqModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) modal.style.display = "flex";
-}
-
-function closeFaqModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) modal.style.display = "none";
-}
 
     loader.style.display = "block";
 
@@ -471,12 +420,50 @@ function closeFaqModal(id) {
     }, 2500);
   }
 
+  function checkStatus() {
+    const id = document.getElementById("status-id").value.trim();
+    const loader = document.getElementById("status-loader");
+    const message = document.getElementById("status-message");
+    const percentEl = document.getElementById("status-percent");
+
+    loader.style.display = "none";
+    message.style.display = "none";
+    message.innerHTML = "";
+    percentEl.innerText = "0%";
+
+    const regex = /^UZ-\d{5,}$/;
+
+    if (!regex.test(id)) {
+      message.style.display = "block";
+      message.style.color = "red";
+      message.innerHTML = "❌ Неверный формат номера заявки.";
+      return;
+    }
+
+    loader.style.display = "block";
+
+    let percent = 0;
+    const interval = setInterval(() => {
+      percent += Math.floor(Math.random() * 10) + 1;
+      if (percent > 100) percent = 100;
+      percentEl.innerText = percent + "%";
+
+      if (percent === 100) {
+        clearInterval(interval);
+        loader.style.display = "none";
+        message.style.display = "block";
+        message.style.color = "green";
+        message.innerHTML = "✅ Ваша заявка в обработке. Спасибо!";
+      }
+    }, 200);
+  }
+
   document.getElementById("modal-check").addEventListener("click", function(e) {
     if (e.target === this) closeModal();
   });
 </script>
 
-  <div id="popup-note" style="position:fixed; bottom:20px; right:20px; background:#ffffff; padding:12px 20px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); color:#333; font-size:14px; display:none; z-index:9999;">
+<div id="popup-note" style="position:fixed; bottom:20px; right:20px; background:#ffffff; padding:12px 20px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); color:#333; font-size:14px; display:none; z-index:9999;">
   ✅ Уже 412 семей подали заявки сегодня
 </div>
 <script>
