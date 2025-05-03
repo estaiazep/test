@@ -99,15 +99,30 @@
     }
 
     .percent-circle {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      border: 6px solid #e0e0e0;
-      border-top: 6px solid #28a745;
-      animation: spin 1.2s linear infinite;
-      margin: 0 auto;
-      position: relative;
-    }
+  width: 70px;
+  height: 70px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.circle-rotate {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 6px solid #e0e0e0;
+  border-top: 6px solid #28a745;
+  animation: spin 1.2s linear infinite;
+}
+
+.percent-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #003366;
+  font-weight: bold;
+}
 
     .percent-text {
       position: absolute;
@@ -325,7 +340,8 @@
   <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:400px; position:relative; box-shadow: 0 6px 20px rgba(0,0,0,0.2);">
     <div id="status-loader" style="display: none; margin-bottom: 20px; text-align: center;">
       <div class="percent-circle">
-        <div id="status-percent" class="percent-text">0%</div>
+       <div class="circle-rotate"></div>
+       <div id="status-percent" class="percent-text">0%</div>
       </div>
       <p style="margin-top: 12px; font-size: 14px; color: #555;">Проверка заявки…</p>
     </div>
