@@ -333,9 +333,16 @@
 <!-- Модальное окно проверки статуса -->
 <div id="modal-status" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
   <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:400px; position:relative; box-shadow: 0 6px 20px rgba(0,0,0,0.2);">
+    <div id="status-loader" style="display: none; margin-bottom: 20px; text-align: center;">
+      <div class="percent-circle">
+        <div id="status-percent" class="percent-text">0%</div>
+      </div>
+      <p style="margin-top: 12px; font-size: 14px; color: #555;">Проверка заявки…</p>
+    </div>
+    <div id="status-message" style="display: none; font-size: 16px; font-weight: 600; text-align: center; margin-top: 10px;"></div>
     <button onclick="closeFaqModal('modal-status')" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">✖</button>
     <h3 style="margin-bottom:10px; color: #003366;">Введите номер заявки</h3>
-    <input type="text" id="status-id" placeholder="Введите номер заявки" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
+    <input type="text" id="status-id" placeholder="UZ-12345" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
     <button onclick="checkStatus()" style="width:100%; background-color: #28a745; color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">📄 Проверить статус</button>
   </div>
 </div>
