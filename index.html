@@ -207,7 +207,27 @@
   </style>
 </head>
 <body>
-<!-- Продолжение HTML и секций сайта будет во 2 части -->
+</head>
+<body>
+<div class="lang-toggle">
+  <div class="lang-switcher">
+    <input type="radio" name="lang" id="lang-ru" checked onclick="switchLang('ru')">
+    <label for="lang-ru">RU</label>
+    <input type="radio" name="lang" id="lang-uz" onclick="switchLang('uz')">
+    <label for="lang-uz">UZ</label>
+    <div class="lang-slider"></div>
+  </div>
+</div>
+
+<script>
+  function switchLang(lang) {
+    const elements = document.querySelectorAll('[data-lang]');
+    elements.forEach(el => {
+      el.setAttribute('data-show', el.getAttribute('data-lang') === lang);
+    });
+  }
+</script>
+
 <header>
   <div class="logo">
     <img src="логотип.png" alt="Uzbek Emblem">
