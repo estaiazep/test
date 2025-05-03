@@ -309,6 +309,14 @@
     <p style="font-size: 16px; color: #555;">💬 Telegram-бот: <a href="https://t.me/MyGovUzRasmiy_bot" target="_blank" style="color: #28a745; text-decoration: underline;">@MyGovUzRasmiy_bot</a></p>
   </div>
 </section>
+  
+<section style="background:#fff; padding:50px 20px; text-align:center;">
+  <h2 style="color:#003366;">Безопасность и конфиденциальность</h2>
+  <p style="color:#555; max-width:700px; margin:10px auto;">Все данные обрабатываются в соответствии с законодательством Республики Узбекистан. Используется защищённое соединение (SSL), персональная информация не передаётся третьим лицам.</p>
+  <div style="margin-top:20px; font-size:24px; color:#28a745;">
+    🔒 🛡️ 📁
+  </div>
+</section>
 
 <!-- Футер -->
 <footer style="background-color: #003366; color: #ffffff; text-align: center; padding: 30px 20px;">
@@ -369,6 +377,18 @@
   document.getElementById("modal-check").addEventListener("click", function(e) {
     if (e.target === this) closeModal();
   });
+</script>
+
+  <div id="popup-note" style="position:fixed; bottom:20px; right:20px; background:#ffffff; padding:12px 20px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); color:#333; font-size:14px; display:none; z-index:9999;">
+  ✅ Уже 412 семей подали заявки сегодня
+</div>
+<script>
+  setTimeout(() => {
+    document.getElementById("popup-note").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("popup-note").style.display = "none";
+    }, 5000);
+  }, 3000);
 </script>
 
 </body>
