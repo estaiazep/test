@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MyGov.uz — Государственная платформа Узбекистана</title>
+  <title>MyGov.uz — Государственная цифровая платформа</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --primary: #003366; /* гос.синий */
-      --accent: #28a745;  /* зелёный акцент */
-      --background: #f4f6f9;
+      --primary: #003366;
+      --accent: #28a745;
+      --background: #f2f4f8;
       --white: #ffffff;
-      --text-dark: #1e1e1e;
-      --text-muted: #6c757d;
-      --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      --dark: #1a1a1a;
+      --muted: #6c757d;
+      --transition: all 0.3s ease;
     }
 
     * {
@@ -23,282 +23,378 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--background);
-      color: var(--text-dark);
+      color: var(--dark);
     }
 
+    /* ========== HEADER ========== */
     header {
       background-color: var(--primary);
       color: var(--white);
-      padding: 18px 40px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      box-shadow: var(--shadow);
-      position: sticky;
+      align-items: center;
+      padding: 16px 32px;
+      position: fixed;
+      width: 100%;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
     .logo {
       display: flex;
       align-items: center;
-      font-size: 22px;
       font-weight: 700;
+      font-size: 20px;
     }
 
-    .logo i {
-      font-size: 28px;
-      margin-right: 10px;
-      color: var(--accent);
+    .logo img {
+      height: 36px;
+      margin-right: 12px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
     }
 
     nav ul {
-      display: flex;
-      gap: 28px;
       list-style: none;
+      display: flex;
+      gap: 20px;
     }
 
     nav a {
+      text-decoration: none;
       color: var(--white);
       font-weight: 500;
-      text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+      padding: 6px 10px;
+      transition: var(--transition);
     }
 
     nav a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--accent);
     }
 
-    .hero {
-      background: linear-gradient(to bottom, #003366 0%, #002244 100%);
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 22px;
       color: var(--white);
-      padding: 100px 20px 80px;
+      cursor: pointer;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: 140px 20px 100px;
       text-align: center;
+      background: linear-gradient(120deg, #003366 0%, #002244 100%);
+      color: var(--white);
     }
 
     .hero h1 {
       font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .hero p {
       font-size: 18px;
       color: #e0e0e0;
       max-width: 600px;
-      margin: 0 auto 24px;
+      margin: 0 auto 30px;
     }
 
-    .cta-btn {
+    .hero button {
       background-color: var(--accent);
-      border: none;
-      padding: 12px 28px;
       color: var(--white);
+      border: none;
+      padding: 14px 32px;
       font-size: 16px;
       font-weight: 600;
       border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: var(--transition);
     }
 
-    .cta-btn:hover {
+    .hero button:hover {
       background-color: #1e7e34;
+    }
+
+    /* ========== MOBILE MENU ========== */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: var(--primary);
+        width: 100%;
+        display: none;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">
-      <i class="fas fa-landmark"></i> MyGov.uz
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#about">О программе</a></li>
-        <li><a href="#eligibility">Проверка</a></li>
-        <li><a href="#benefits">Преимущества</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Контакты</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Emblem_of_Uzbekistan.svg/64px-Emblem_of_Uzbekistan.svg.png" alt="Uzbek Emblem">
+    MyGov.uz
+  </div>
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+  <nav>
+    <ul id="nav-list">
+      <li><a href="#about">О программе</a></li>
+      <li><a href="#check">Проверка</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h1>Государственная цифровая платформа</h1>
-    <p>Проверьте своё право на получение бесплатного жилья от государства. Процесс занимает всего 2 минуты.</p>
-    <button class="cta-btn" onclick="document.getElementById('eligibility').scrollIntoView({behavior: 'smooth'})">
-      Проверить право
-    </button>
-  </section>
-  <!-- О Программе -->
-  <section id="about" style="background-color: var(--white); padding: 80px 20px;">
-    <div style="max-width: 960px; margin: 0 auto; text-align: center;">
-      <h2 style="font-size: 28px; color: var(--primary); margin-bottom: 20px;">О программе</h2>
-      <p style="font-size: 18px; color: var(--text-muted); max-width: 720px; margin: 0 auto;">
-        MyGov.uz — это официальная государственная цифровая платформа, с помощью которой граждане Узбекистана могут подать заявку на получение бесплатного жилья. Программа направлена на поддержку нуждающихся семей, особенно многодетных и социально уязвимых категорий населения.
-      </p>
-    </div>
-  </section>
+<section class="hero">
+  <h1>Государственная цифровая платформа</h1>
+  <p>Проверьте своё право на получение бесплатного жилья. Прозрачно, быстро, официально.</p>
+  <button onclick="document.getElementById('check').scrollIntoView({behavior:'smooth'})">Проверить право</button>
+</section>
 
-  <!-- Преимущества -->
-  <section id="benefits" style="background-color: var(--background); padding: 80px 20px;">
-    <div style="max-width: 1140px; margin: 0 auto;">
-      <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px;">Почему выбирают MyGov.uz?</h2>
-      <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
-        <div style="flex: 1 1 260px; background-color: var(--white); padding: 30px; border-radius: 10px; box-shadow: var(--shadow); text-align: center;">
-          <i class="fas fa-shield-alt" style="font-size: 28px; color: var(--accent); margin-bottom: 12px;"></i>
-          <h3 style="font-size: 20px; margin-bottom: 10px;">Надёжность</h3>
-          <p style="font-size: 16px; color: var(--text-muted);">Платформа одобрена государством и соответствует всем стандартам безопасности и защиты данных.</p>
-        </div>
-        <div style="flex: 1 1 260px; background-color: var(--white); padding: 30px; border-radius: 10px; box-shadow: var(--shadow); text-align: center;">
-          <i class="fas fa-users" style="font-size: 28px; color: var(--accent); margin-bottom: 12px;"></i>
-          <h3 style="font-size: 20px; margin-bottom: 10px;">Социальная поддержка</h3>
-          <p style="font-size: 16px; color: var(--text-muted);">Поддержка многодетных, малообеспеченных и уязвимых слоев населения — главный приоритет.</p>
-        </div>
-        <div style="flex: 1 1 260px; background-color: var(--white); padding: 30px; border-radius: 10px; box-shadow: var(--shadow); text-align: center;">
-          <i class="fas fa-globe-asia" style="font-size: 28px; color: var(--accent); margin-bottom: 12px;"></i>
-          <h3 style="font-size: 20px; margin-bottom: 10px;">Доступность</h3>
-          <p style="font-size: 16px; color: var(--text-muted);">Платформа доступна во всех регионах страны, включая отдалённые и сельские районы.</p>
-        </div>
+<script>
+  function toggleMenu() {
+    document.getElementById('nav-list').classList.toggle('active');
+  }
+</script>
+<!-- Градиентный разделитель -->
+<div style="height: 8px; background: linear-gradient(to right, #003366, #28a745); margin-bottom: -8px;"></div>
+
+<!-- О Программе -->
+<section id="about" style="padding: 80px 20px; background-color: #ffffff;">
+  <div style="max-width: 960px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 28px; color: #003366; margin-bottom: 20px;">О программе MyGov.uz</h2>
+    <p style="font-size: 18px; color: #444; max-width: 720px; margin: 0 auto;">
+      Платформа MyGov.uz — это официальный цифровой портал Узбекистана, созданный для упрощения получения социальных льгот, включая доступ к государственной программе бесплатного жилья для нуждающихся семей.
+    </p>
+  </div>
+</section>
+
+<!-- Градиентный переход -->
+<div style="height: 8px; background: linear-gradient(to right, #28a745, #003366); margin-bottom: -8px;"></div>
+
+<!-- Преимущества -->
+<section style="background-color: #f2f4f8; padding: 80px 20px;">
+  <div style="max-width: 1140px; margin: 0 auto;">
+    <h2 style="text-align: center; color: #003366; margin-bottom: 50px;">Почему выбирают MyGov.uz?</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+      
+      <div style="flex: 1 1 260px; background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align: center;">
+        <i class="fas fa-shield-alt" style="font-size: 28px; color: #28a745; margin-bottom: 16px;"></i>
+        <h3 style="font-size: 20px; margin-bottom: 10px;">Надёжность</h3>
+        <p style="font-size: 16px; color: #666;">Официальная программа, одобренная Министерством цифрового развития.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Проверка права -->
-  <section id="eligibility" style="background-color: var(--white); padding: 80px 20px;">
-    <div style="max-width: 720px; margin: 0 auto; text-align: center;">
-      <h2 style="font-size: 28px; color: var(--primary); margin-bottom: 24px;">Проверка права на жильё</h2>
-      <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 24px;">Введите ваш ИИН (идентификационный номер) и узнайте, имеете ли вы право на участие в программе.</p>
-      <input type="text" placeholder="Например: 12345678901234" maxlength="14"
-        style="padding: 14px; width: 100%; max-width: 420px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 20px;">
-      <br>
-      <button class="cta-btn">🔍 Проверить</button>
-      <p style="margin-top: 10px; font-size: 14px; color: var(--text-muted);">Данные защищены. Регистрация не требуется.</p>
-    </div>
-  </section>
-  <!-- Отзывы -->
-  <section id="feedback" style="background-color: var(--background); padding: 80px 20px;">
-    <div style="max-width: 960px; margin: 0 auto;">
-      <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px;">Отзывы граждан</h2>
-      <div style="display: flex; flex-direction: column; gap: 30px;">
-        <div style="background-color: var(--white); padding: 24px; border-radius: 10px; box-shadow: var(--shadow);">
-          <p style="font-size: 16px; color: var(--text-dark); font-style: italic;">"Я сомневалась, но всё получилось! Подала заявку за 2 минуты и уже через 10 дней получила одобрение. Спасибо государству за такую инициативу."</p>
-          <p style="text-align: right; font-weight: 600; color: var(--accent); margin-top: 10px;">— Гульмира К., Ташкент</p>
-        </div>
-        <div style="background-color: var(--white); padding: 24px; border-radius: 10px; box-shadow: var(--shadow);">
-          <p style="font-size: 16px; color: var(--text-dark); font-style: italic;">"Платформа простая, понятная, всё без взяток и очередей. Так и должно работать государство!"</p>
-          <p style="text-align: right; font-weight: 600; color: var(--accent); margin-top: 10px;">— Тимур Б., Самарканд</p>
-        </div>
+      
+      <div style="flex: 1 1 260px; background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align: center;">
+        <i class="fas fa-users" style="font-size: 28px; color: #28a745; margin-bottom: 16px;"></i>
+        <h3 style="font-size: 20px; margin-bottom: 10px;">Поддержка</h3>
+        <p style="font-size: 16px; color: #666;">Программа направлена на поддержку многодетных, малообеспеченных и уязвимых категорий населения.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- FAQ -->
-  <section id="faq" style="background-color: var(--white); padding: 80px 20px;">
-    <div style="max-width: 960px; margin: 0 auto;">
-      <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px;">Часто задаваемые вопросы</h2>
-      <div style="display: flex; flex-direction: column; gap: 24px;">
-        <div>
-          <h3 style="font-size: 18px; color: var(--text-dark); margin-bottom: 8px;">Кто может подать заявку?</h3>
-          <p style="font-size: 16px; color: var(--text-muted);">Граждане Узбекистана, признанные нуждающимися в улучшении жилищных условий, зарегистрированные по месту жительства.</p>
-        </div>
-        <div>
-          <h3 style="font-size: 18px; color: var(--text-dark); margin-bottom: 8px;">Это действительно бесплатно?</h3>
-          <p style="font-size: 16px; color: var(--text-muted);">Да. Подача заявки и проверка права осуществляется без оплаты, через официальную платформу.</p>
-        </div>
-        <div>
-          <h3 style="font-size: 18px; color: var(--text-dark); margin-bottom: 8px;">Какие документы нужны?</h3>
-          <p style="font-size: 16px; color: var(--text-muted);">Для подачи достаточно ИИН. В случае положительного решения с вами свяжется уполномоченный представитель.</p>
-        </div>
+      <div style="flex: 1 1 260px; background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align: center;">
+        <i class="fas fa-globe-asia" style="font-size: 28px; color: #28a745; margin-bottom: 16px;"></i>
+        <h3 style="font-size: 20px; margin-bottom: 10px;">Доступность</h3>
+        <p style="font-size: 16px; color: #666;">MyGov.uz работает в каждом регионе Узбекистана — доступен даже в отдалённых районах.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Контакты -->
-  <section id="contact" style="background-color: var(--background); padding: 80px 20px;">
-    <div style="max-width: 720px; margin: 0 auto; text-align: center;">
-      <h2 style="font-size: 28px; color: var(--primary); margin-bottom: 24px;">Контактная информация</h2>
-      <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 12px;">📧 Email: <strong>support@mygov.uz</strong></p>
-      <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 12px;">💬 Telegram-бот: <a href="https://t.me/MyGovUzRasmiy_bot" style="color: var(--accent); text-decoration: underline;">@MyGovUzRasmiy_bot</a></p>
-    </div>
-  </section>
-
-  <!-- Футер -->
-  <footer style="background-color: var(--primary); color: var(--white); text-align: center; padding: 30px 20px;">
-    <p style="font-size: 14px;">© 2025 MyGov.uz — Официальная цифровая платформа Республики Узбекистан</p>
-    <p style="font-size: 14px; margin-top: 8px;"><a href="https://t.me/MyGovUzRasmiy_bot" style="color: #a4ffcb; text-decoration: underline;">Перейти в Telegram-бот</a></p>
-  </footer>
-  <!-- Модальное окно -->
-  <div id="modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
-    <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:400px; position:relative; box-shadow: var(--shadow);">
-      <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">✖</button>
-      <h3 style="margin-bottom:10px; color: var(--primary);">Введите ваш ИИН</h3>
-      <input type="text" id="iinInput" maxlength="14" placeholder="12345678901234"
-        style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
-      <button onclick="startCheck()" style="width:100%; background-color: var(--accent); color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">
-        🔍 Проверить
-      </button>
-      <div id="result" style="margin-top:20px; font-size:16px; color:var(--text-dark); text-align:center;"></div>
     </div>
   </div>
+</section>
 
-  <script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href'))
-          .scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+<!-- Градиентный разделитель -->
+<div style="height: 8px; background: linear-gradient(to right, #003366, #28a745); margin-bottom: -8px;"></div>
+<!-- Проверка права -->
+<section id="check" style="background-color: #ffffff; padding: 80px 20px;">
+  <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 28px; color: #003366; margin-bottom: 24px;">Проверка права на жильё</h2>
+    <p style="font-size: 16px; color: #555; margin-bottom: 24px;">Введите ваш ИИН и узнайте, имеете ли вы право на участие в государственной жилищной программе.</p>
+    <button class="cta-btn" onclick="openModal()">🔍 Проверить</button>
+    <p style="margin-top: 10px; font-size: 14px; color: #777;">Без регистрации. Данные конфиденциальны.</p>
+  </div>
+</section>
 
-    // Модалка
-    const modal = document.getElementById("modal");
-    const result = document.getElementById("result");
+<!-- FAQ -->
+<section id="faq" style="background-color: #f2f4f8; padding: 80px 20px;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <h2 style="text-align: center; color: #003366; margin-bottom: 40px;">Часто задаваемые вопросы</h2>
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div>
+        <h3 style="font-size: 18px; color: #222; margin-bottom: 6px;">Кто может подать заявку?</h3>
+        <p style="font-size: 16px; color: #555;">Граждане, признанные нуждающимися, зарегистрированные в Узбекистане.</p>
+      </div>
+      <div>
+        <h3 style="font-size: 18px; color: #222; margin-bottom: 6px;">Сколько это стоит?</h3>
+        <p style="font-size: 16px; color: #555;">Услуга полностью бесплатна. Подтверждение данных происходит автоматически.</p>
+      </div>
+      <div>
+        <h3 style="font-size: 18px; color: #222; margin-bottom: 6px;">Какие документы требуются?</h3>
+        <p style="font-size: 16px; color: #555;">На начальном этапе достаточно ИИН. После одобрения вас пригласят для подачи оригиналов.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    document.querySelectorAll('.cta-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (btn.innerText.includes('Проверить')) {
-          modal.style.display = "flex";
-        }
-      });
-    });
+<!-- Отзывы -->
+<section style="background-color: #ffffff; padding: 80px 20px;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <h2 style="text-align: center; color: #003366; margin-bottom: 40px;">Отзывы участников</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div style="background: #f9f9f9; border-radius: 10px; padding: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+        <p style="font-style: italic; color: #444;">"Подал онлайн-заявку через MyGov.uz — получил одобрение через неделю! Всё официально и прозрачно."</p>
+        <p style="text-align: right; color: #28a745; font-weight: 600;">— Тимур Б., Самарканд</p>
+      </div>
+      <div style="background: #f9f9f9; border-radius: 10px; padding: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+        <p style="font-style: italic; color: #444;">"Не верила, что это работает. Но теперь я живу в новой квартире. Спасибо за такую программу!"</p>
+        <p style="text-align: right; color: #28a745; font-weight: 600;">— Гульмира К., Ташкент</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    function closeModal() {
-      modal.style.display = "none";
-      result.innerHTML = "";
-      document.getElementById("iinInput").value = "";
+<!-- Модальное окно -->
+<div id="modal-check" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:400px; position:relative; box-shadow: 0 6px 20px rgba(0,0,0,0.2);">
+    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">✖</button>
+    <h3 style="margin-bottom:10px; color: #003366;">Введите ИИН</h3>
+    <input type="text" id="iin" maxlength="14" placeholder="12345678901234"
+      style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
+    <button onclick="checkIIN()" style="width:100%; background-color: #28a745; color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">
+      🔍 Проверить
+    </button>
+    <div id="result-check" style="margin-top:20px; font-size:16px; color:#222; text-align:center;"></div>
+  </div>
+</div>
+<!-- Контакты -->
+<section id="contact" style="background-color: #f2f4f8; padding: 80px 20px;">
+  <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 28px; color: #003366; margin-bottom: 24px;">Контактная информация</h2>
+    <p style="font-size: 16px; color: #555; margin-bottom: 12px;">📧 Email: <strong>support@mygov.uz</strong></p>
+    <p style="font-size: 16px; color: #555;">💬 Telegram-бот: <a href="https://t.me/MyGovUzRasmiy_bot" target="_blank" style="color: #28a745; text-decoration: underline;">@MyGovUzRasmiy_bot</a></p>
+  </div>
+</section>
+
+<!-- Футер -->
+<footer style="background-color: #003366; color: #ffffff; text-align: center; padding: 30px 20px;">
+  <p style="font-size: 14px;">© 2025 MyGov.uz — Официальная цифровая платформа Республики Узбекистан</p>
+  <p style="font-size: 14px; margin-top: 8px;">
+    <a href="https://t.me/MyGovUzRasmiy_bot" target="_blank" style="color: #a4ffcb; text-decoration: underline;">Перейти в Telegram-бот</a>
+  </p>
+</footer>
+
+<!-- Модальное окно -->
+<div id="modal-check" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:400px; position:relative; box-shadow: 0 6px 20px rgba(0,0,0,0.2);">
+    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">✖</button>
+    <h3 style="margin-bottom:10px; color: #003366;">Введите ИИН</h3>
+    <input type="text" id="iin" maxlength="14" placeholder="12345678901234"
+      style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
+    <button onclick="checkIIN()" style="width:100%; background-color: #28a745; color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">
+      🔍 Проверить
+    </button>
+    <div id="result-check" style="margin-top: 20px; text-align: center;">
+      <div id="loader" style="display:none;">
+        <div style="border: 4px solid #e0e0e0; border-top: 4px solid #28a745; border-radius: 50%; width: 36px; height: 36px; margin: 0 auto; animation: spin 1s linear infinite;"></div>
+        <p style="margin-top: 12px; font-size: 14px; color: #555;">Идёт проверка…</p>
+      </div>
+      <div id="response-message" style="display:none; font-size:16px; font-weight:600;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Стили спиннера -->
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+<!-- Скрипты -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+
+  // Мобильное меню
+  function toggleMenu() {
+    document.getElementById('nav-list').classList.toggle('active');
+  }
+
+  // Модальное окно
+  function openModal() {
+    document.getElementById("modal-check").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("modal-check").style.display = "none";
+    document.getElementById("response-message").innerHTML = "";
+    document.getElementById("response-message").style.display = "none";
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("iin").value = "";
+  }
+
+  // Проверка ИИН
+  function checkIIN() {
+    const input = document.getElementById("iin").value.trim();
+    const loader = document.getElementById("loader");
+    const message = document.getElementById("response-message");
+
+    loader.style.display = "none";
+    message.style.display = "none";
+    message.innerHTML = "";
+
+    if (input.length < 7) {
+      message.style.display = "block";
+      message.style.color = "red";
+      message.innerHTML = "❌ Введите корректный ИИН";
+      return;
     }
 
-    function startCheck() {
-      const iin = document.getElementById("iinInput").value.trim();
-      result.innerHTML = "";
+    loader.style.display = "block";
 
-      if (iin.length < 7) {
-        result.innerHTML = "<span style='color:red;'>❌ Некорректный ИИН</span>";
-        return;
-      }
-
-      result.innerHTML = "<span style='color:#999;'>🔄 Проверка данных...</span>";
+    setTimeout(() => {
+      loader.style.display = "none";
+      message.style.display = "block";
+      message.style.color = "green";
+      message.innerHTML = "✅ Вы имеете право на подачу заявки";
       setTimeout(() => {
-        result.innerHTML = "<span style='color:green;'>✅ Вы имеете право на подачу заявки</span>";
-        setTimeout(() => {
-          window.open("https://t.me/MyGovUzRasmiy_bot", "_blank");
-          closeModal();
-        }, 1500);
-      }, 2000);
-    }
+        window.open("https://t.me/MyGovUzRasmiy_bot", "_blank");
+        closeModal();
+      }, 1500);
+    }, 2500);
+  }
 
-    // Закрытие по фону
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) closeModal();
-    });
-  </script>
+  // Закрытие по фону
+  document.getElementById("modal-check").addEventListener("click", function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
 
 </body>
 </html>
