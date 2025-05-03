@@ -378,6 +378,15 @@ function checkStatus() {
       message.innerHTML = "❌ Введите корректный ИИН";
       return;
     }
+    function openFaqModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.style.display = "flex";
+}
+
+function closeFaqModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.style.display = "none";
+}
 
     loader.style.display = "block";
 
