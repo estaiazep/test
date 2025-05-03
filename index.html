@@ -91,48 +91,6 @@
       cursor: pointer;
     }
 
-    .hero {
-      padding: 140px 20px 100px;
-      text-align: center;
-      background: linear-gradient(120deg, #003366 0%, #002244 100%);
-      color: var(--white);
-    }
-
-    .percent-circle {
-  width: 70px;
-  height: 70px;
-  position: relative;
-  margin: 0 auto;
-}
-
-.circle-rotate {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 6px solid #e0e0e0;
-  border-top: 6px solid #28a745;
-  animation: spin 1.2s linear infinite;
-}
-
-.percent-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 16px;
-  color: #003366;
-  font-weight: bold;
-}
-
-    .percent-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 16px;
-      color: #003366;
-      font-weight: bold;
-    }
     .lang-switcher {
       position: fixed;
       top: 16px;
@@ -145,9 +103,11 @@
       padding: 4px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .lang-switcher input[type="radio"] {
+
+    .lang-switcher input[type=\"radio\"] {
       display: none;
     }
+
     .lang-switcher label {
       padding: 8px 14px;
       cursor: pointer;
@@ -157,56 +117,11 @@
       font-weight: 600;
       color: #003366;
     }
-    .lang-switcher input[type="radio"]:checked + label {
+
+    .lang-switcher input[type=\"radio\"]:checked + label {
       background-color: #28a745;
       color: white;
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
-
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #e0e0e0;
-      max-width: 600px;
-      margin: 0 auto 30px;
-    }
-
-    .hero button {
-      background-color: var(--accent);
-      color: var(--white);
-      border: none;
-      padding: 14px 32px;
-      font-size: 16px;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .hero button:hover {
-      background-color: #1e7e34;
-    }
-
-    .cta-btn {
-      background-color: var(--accent);
-      color: white;
-      padding: 14px 32px;
-      font-size: 16px;
-      font-weight: 600;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s, transform 0.2s ease;
-    }
-
-    .cta-btn:hover {
-      background-color: #1e7e34;
-      transform: scale(1.03);
     }
 
     @media (max-width: 768px) {
@@ -228,52 +143,61 @@
         display: block;
       }
     }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
   </style>
 </head>
 <body>
   <div class="lang-switcher">
-  <input type="radio" id="lang-ru" name="language" value="ru" onclick="setLanguage('ru')">
-  <label for="lang-ru">🇷🇺 RU</label>
-  <input type="radio" id="lang-uz" name="language" value="uz" onclick="setLanguage('uz')">
-  <label for="lang-uz">🇺🇿 UZ</label>
-</div>
-<header>
-  <div class="logo">
-    <img src="логотип.png" alt="Uzbek Emblem">
-    MyGov.uz
+    <input type="radio" id="lang-ru" name="language" value="ru" onclick="setLanguage('ru')">
+    <label for="lang-ru">🇷🇺 RU</label>
+    <input type="radio" id="lang-uz" name="language" value="uz" onclick="setLanguage('uz')">
+    <label for="lang-uz">🇺🇿 UZ</label>
   </div>
-  <button class="menu-toggle" onclick="toggleMenu()">
-    <i class="fas fa-bars"></i>
-  </button>
-  <nav>
-    <ul id="nav-list">
-      <li><a href="#about">О программе</a></li>
-      <li><a href="#check">Проверка</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Контакты</a></li>
-    </ul>
-  </nav>
-</header>
 
-<section class="hero">
-  <h1>Государственная цифровая платформа</h1>
-  <p>Проверьте своё право на получение бесплатного жилья. Прозрачно, быстро, официально.</p>
-  <button onclick="document.getElementById('check').scrollIntoView({behavior:'smooth'})">Проверить право</button>
+  <header>
+    <div class="logo">
+      <img src=\"логотип.png\" alt=\"Uzbek Emblem\">
+      <span data-lang=\"ru\">MyGov.uz</span>
+      <span data-lang=\"uz\" style=\"display:none;\">MyGov.uz</span>
+    </div>
+    <button class=\"menu-toggle\" onclick=\"toggleMenu()\">
+      <i class=\"fas fa-bars\"></i>
+    </button>
+    <nav>
+      <ul id=\"nav-list\">
+        <li><a href=\"#about\"><span data-lang=\"ru\">О программе</span><span data-lang=\"uz\" style=\"display:none;\">Dastur haqida</span></a></li>
+        <li><a href=\"#check\"><span data-lang=\"ru\">Проверка</span><span data-lang=\"uz\" style=\"display:none;\">Tekshirish</span></a></li>
+        <li><a href=\"#faq\"><span data-lang=\"ru\">FAQ</span><span data-lang=\"uz\" style=\"display:none;\">Savollar</span></a></li>
+        <li><a href=\"#contact\"><span data-lang=\"ru\">Контакты</span><span data-lang=\"uz\" style=\"display:none;\">Aloqa</span></a></li>
+      </ul>
+    </nav>
+  </header>
+<section class="hero" style="padding: 140px 20px 100px; text-align: center; background: linear-gradient(120deg, #003366 0%, #002244 100%); color: white;">
+  <h1>
+    <span data-lang="ru">Государственная цифровая платформа</span>
+    <span data-lang="uz" style="display:none;">Davlat raqamli platformasi</span>
+  </h1>
+  <p>
+    <span data-lang="ru">Проверьте своё право на получение бесплатного жилья. Прозрачно, быстро, официально.</span>
+    <span data-lang="uz" style="display:none;">Bepul uy olish huquqiga egamisiz? Tezkor, shaffof, rasmiy tekshiruv.</span>
+  </p>
+  <button onclick="document.getElementById('check').scrollIntoView({behavior:'smooth'})">
+    <span data-lang="ru">Проверить право</span>
+    <span data-lang="uz" style="display:none;">Huquqni tekshirish</span>
+  </button>
 </section>
-<!-- Градиентный разделитель -->
+
 <div style="height: 8px; background: linear-gradient(to right, #003366, #28a745); margin-bottom: -8px;"></div>
 
 <!-- О Программе -->
 <section id="about" style="padding: 80px 20px; background-color: #ffffff;">
   <div style="max-width: 960px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 28px; color: #003366; margin-bottom: 20px;">О программе MyGov.uz</h2>
+    <h2 style="font-size: 28px; color: #003366; margin-bottom: 20px;">
+      <span data-lang="ru">О программе MyGov.uz</span>
+      <span data-lang="uz" style="display:none;">MyGov.uz dasturi haqida</span>
+    </h2>
     <p style="font-size: 18px; color: #444; max-width: 720px; margin: 0 auto;">
-      Платформа MyGov.uz — это официальный цифровой портал Узбекистана, созданный для упрощения получения социальных льгот, включая доступ к государственной программе бесплатного жилья для нуждающихся семей.
+      <span data-lang="ru">Платформа MyGov.uz — это официальный цифровой портал Узбекистана, созданный для упрощения получения социальных льгот, включая доступ к государственной программе бесплатного жилья для нуждающихся семей.</span>
+      <span data-lang="uz" style="display:none;">MyGov.uz platformasi — bu Oʻzbekistonning rasmiy raqamli portali boʻlib, ijtimoiy yordamlarni, xususan, ehtiyojmand oilalarga bepul uy-joy taqdim etish dasturiga kirishni soddalashtirish uchun yaratilgan.</span>
     </p>
   </div>
 </section>
@@ -283,22 +207,45 @@
 <!-- Преимущества -->
 <section style="background-color: #f2f4f8; padding: 80px 20px;">
   <div style="max-width: 1140px; margin: 0 auto;">
-    <h2 style="text-align: center; color: #003366; margin-bottom: 50px;">Почему выбирают MyGov.uz?</h2>
+    <h2 style="text-align: center; color: #003366; margin-bottom: 50px;">
+      <span data-lang="ru">Почему выбирают MyGov.uz?</span>
+      <span data-lang="uz" style="display:none;">Nega MyGov.uz?</span>
+    </h2>
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
       <div style="flex: 1 1 260px; background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align: center;">
         <i class="fas fa-shield-alt" style="font-size: 28px; color: #28a745; margin-bottom: 16px;"></i>
-        <h3>Надёжность</h3>
-        <p>Официальная программа, одобренная Министерством цифрового развития.</p>
+        <h3>
+          <span data-lang="ru">Надёжность</span>
+          <span data-lang="uz" style="display:none;">Ishonchlilik</span>
+        </h3>
+        <p>
+          <span data-lang="ru">Официальная программа, одобренная Министерством цифрового развития.</span>
+          <span data-lang="uz" style="display:none;">Raqamli rivojlanish vazirligi tomonidan tasdiqlangan rasmiy dastur.</span>
+        </p>
       </div>
+
       <div style="flex: 1 1 260px; background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align: center;">
         <i class="fas fa-users" style="font-size: 28px; color: #28a745; margin-bottom: 16px;"></i>
-        <h3>Поддержка</h3>
-        <p>Поддержка многодетных, малообеспеченных и социально уязвимых граждан.</p>
+        <h3>
+          <span data-lang="ru">Поддержка</span>
+          <span data-lang="uz" style="display:none;">Qo'llab-quvvatlash</span>
+        </h3>
+        <p>
+          <span data-lang="ru">Поддержка многодетных, малообеспеченных и социально уязвимых граждан.</span>
+          <span data-lang="uz" style="display:none;">Ko‘p farzandli, kam ta’minlangan va ijtimoiy himoyaga muhtoj fuqarolarga yordam.</span>
+        </p>
       </div>
+
       <div style="flex: 1 1 260px; background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align: center;">
         <i class="fas fa-globe-asia" style="font-size: 28px; color: #28a745; margin-bottom: 16px;"></i>
-        <h3>Доступность</h3>
-        <p>Доступна во всех регионах Узбекистана, включая сельские и удалённые районы.</p>
+        <h3>
+          <span data-lang="ru">Доступность</span>
+          <span data-lang="uz" style="display:none;">Mavjudlik</span>
+        </h3>
+        <p>
+          <span data-lang="ru">Доступна во всех регионах Узбекистана, включая сельские и удалённые районы.</span>
+          <span data-lang="uz" style="display:none;">Butun O'zbekiston bo'ylab, jumladan qishloq va uzoq hududlarda mavjud.</span>
+        </p>
       </div>
     </div>
   </div>
@@ -306,31 +253,66 @@
 <!-- Проверка права -->
 <section id="check" style="background-color: #ffffff; padding: 80px 20px;">
   <div style="max-width: 720px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 28px; color: #003366; margin-bottom: 24px;">Проверка права на жильё</h2>
-    <p style="font-size: 16px; color: #555; margin-bottom: 24px;">Введите ваш ИИН и узнайте, имеете ли вы право на участие в программе.</p>
-    <button class="cta-btn" onclick="openModal()">🔍 Проверить</button>
-    <button class="cta-btn" style="margin-top: 12px;" onclick="openFaqModal('modal-status')">📄 Проверить статус заявки</button>
-    <p style="margin-top: 10px; font-size: 14px; color: #777;">Не требует регистрации</p>
+    <h2 style="font-size: 28px; color: #003366; margin-bottom: 24px;">
+      <span data-lang="ru">Проверка права на жильё</span>
+      <span data-lang="uz" style="display:none;">Uy-joy huquqini tekshirish</span>
+    </h2>
+    <p style="font-size: 16px; color: #555; margin-bottom: 24px;">
+      <span data-lang="ru">Введите ваш ИИН и узнайте, имеете ли вы право на участие в программе.</span>
+      <span data-lang="uz" style="display:none;">INN raqamingizni kiriting va dasturda ishtirok etish huquqiga egamisiz, bilib oling.</span>
+    </p>
+    <button class="cta-btn" onclick="openModal()">
+      <span data-lang="ru">🔍 Проверить</span>
+      <span data-lang="uz" style="display:none;">🔍 Tekshirish</span>
+    </button>
+    <button class="cta-btn" style="margin-top: 12px;" onclick="openFaqModal('modal-status')">
+      <span data-lang="ru">📄 Проверить статус заявки</span>
+      <span data-lang="uz" style="display:none;">📄 Ariza holatini ko‘rish</span>
+    </button>
+    <p style="margin-top: 10px; font-size: 14px; color: #777;">
+      <span data-lang="ru">Не требует регистрации</span>
+      <span data-lang="uz" style="display:none;">Ro'yxatdan o'tish shart emas</span>
+    </p>
   </div>
 </section>
-
 
 <!-- FAQ -->
 <section id="faq" style="background-color: #f2f4f8; padding: 80px 20px;">
   <div style="max-width: 960px; margin: 0 auto;">
-    <h2 style="text-align: center; color: #003366; margin-bottom: 40px;">Часто задаваемые вопросы</h2>
+    <h2 style="text-align: center; color: #003366; margin-bottom: 40px;">
+      <span data-lang="ru">Часто задаваемые вопросы</span>
+      <span data-lang="uz" style="display:none;">Ko‘p so‘raladigan savollar</span>
+    </h2>
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
-        <h3>Кто может подать заявку?</h3>
-        <p>Граждане, признанные нуждающимися, зарегистрированные в Узбекистане.</p>
+        <h3>
+          <span data-lang="ru">Кто может подать заявку?</span>
+          <span data-lang="uz" style="display:none;">Kim ariza topshirishi mumkin?</span>
+        </h3>
+        <p>
+          <span data-lang="ru">Граждане, признанные нуждающимися, зарегистрированные в Узбекистане.</span>
+          <span data-lang="uz" style="display:none;">O'zbekistonda ro'yxatdan o'tgan va ehtiyojmand deb topilgan fuqarolar.</span>
+        </p>
       </div>
       <div>
-        <h3>Это бесплатно?</h3>
-        <p>Да. Подача заявки и проверка права полностью бесплатны.</p>
+        <h3>
+          <span data-lang="ru">Это бесплатно?</span>
+          <span data-lang="uz" style="display:none;">Bu bepulmi?</span>
+        </h3>
+        <p>
+          <span data-lang="ru">Да. Подача заявки и проверка права полностью бесплатны.</span>
+          <span data-lang="uz" style="display:none;">Ha. Ariza topshirish va huquqni tekshirish mutlaqo bepul.</span>
+        </p>
       </div>
       <div>
-        <h3>Что потребуется?</h3>
-        <p>Только ваш ИИН. При одобрении потребуется дополнительно подтвердить личность.</p>
+        <h3>
+          <span data-lang="ru">Что потребуется?</span>
+          <span data-lang="uz" style="display:none;">Nima kerak bo‘ladi?</span>
+        </h3>
+        <p>
+          <span data-lang="ru">Только ваш ИИН. При одобрении потребуется дополнительно подтвердить личность.</span>
+          <span data-lang="uz" style="display:none;">Faqat INN raqamingiz. Tasdiq olgach, shaxsingizni tasdiqlash kerak bo‘ladi.</span>
+        </p>
       </div>
     </div>
   </div>
@@ -339,77 +321,135 @@
 <!-- Отзывы -->
 <section style="background-color: #ffffff; padding: 80px 20px;">
   <div style="max-width: 960px; margin: 0 auto;">
-    <h2 style="text-align: center; color: #003366; margin-bottom: 40px;">Отзывы участников</h2>
+    <h2 style="text-align: center; color: #003366; margin-bottom: 40px;">
+      <span data-lang="ru">Отзывы участников</span>
+      <span data-lang="uz" style="display:none;">Ishtirokchilar fikrlari</span>
+    </h2>
     <div style="display: flex; flex-direction: column; gap: 30px;">
       <div style="background: #f9f9f9; border-radius: 10px; padding: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-        <p style="font-style: italic; color: #444;">"Я подал заявку и через неделю уже получил одобрение. Спасибо за честную систему!"</p>
-        <p style="text-align: right; color: #28a745; font-weight: 600;">— Тимур Б., Самарканд</p>
+        <p style="font-style: italic; color: #444;">
+          <span data-lang="ru">"Я подал заявку и через неделю уже получил одобрение. Спасибо за честную систему!"</span>
+          <span data-lang="uz" style="display:none;">\"Ariza topshirdim va bir haftada tasdiq oldim. Halol tizim uchun rahmat!\"</span>
+        </p>
+        <p style="text-align: right; color: #28a745; font-weight: 600;">
+          <span data-lang="ru">— Тимур Б., Самарканд</span>
+          <span data-lang="uz" style="display:none;">— Timur B., Samarqand</span>
+        </p>
       </div>
+
       <div style="background: #f9f9f9; border-radius: 10px; padding: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-        <p style="font-style: italic; color: #444;">"MyGov.uz реально помогает! Спасибо за удобную подачу онлайн."</p>
-        <p style="text-align: right; color: #28a745; font-weight: 600;">— Гульмира К., Ташкент</p>
+        <p style="font-style: italic; color: #444;">
+          <span data-lang="ru">"MyGov.uz реально помогает! Спасибо за удобную подачу онлайн."</span>
+          <span data-lang="uz" style="display:none;">\"MyGov.uz chinakam yordam berdi! Arizani onlayn topshirish juda qulay.\"</span>
+        </p>
+        <p style="text-align: right; color: #28a745; font-weight: 600;">
+          <span data-lang="ru">— Гульмира К., Ташкент</span>
+          <span data-lang="uz" style="display:none;">— Gulmira K., Toshkent</span>
+        </p>
       </div>
     </div>
   </div>
 </section>
-
-<!-- Модальное окно -->
+<!-- Модальное окно ввода ИИН -->
 <div id="modal-check" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
   <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:400px; position:relative; box-shadow: 0 6px 20px rgba(0,0,0,0.2);">
     <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">✖</button>
-    <h3 style="margin-bottom:10px; color: #003366;">Введите ИИН</h3>
+    <h3 style="margin-bottom:10px; color: #003366;">
+      <span data-lang="ru">Введите ИИН</span>
+      <span data-lang="uz" style="display:none;">INN raqamini kiriting</span>
+    </h3>
     <input type="text" id="iin" maxlength="14" placeholder="12345678901234" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
-    <button onclick="checkIIN()" style="width:100%; background-color: #28a745; color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">🔍 Проверить</button>
+    <button onclick="checkIIN()" style="width:100%; background-color: #28a745; color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">
+      <span data-lang="ru">🔍 Проверить</span>
+      <span data-lang="uz" style="display:none;">🔍 Tekshirish</span>
+    </button>
     <div id="result-check" style="margin-top: 20px; text-align: center;">
       <div id="loader" style="display:none;">
         <div style="border: 4px solid #e0e0e0; border-top: 4px solid #28a745; border-radius: 50%; width: 36px; height: 36px; margin: 0 auto; animation: spin 1s linear infinite;"></div>
-        <p style="margin-top: 12px; font-size: 14px; color: #555;">Идёт проверка…</p>
+        <p style="margin-top: 12px; font-size: 14px; color: #555;">
+          <span data-lang="ru">Идёт проверка…</span>
+          <span data-lang="uz" style="display:none;">Tekshirilmoqda…</span>
+        </p>
       </div>
       <div id="response-message" style="display:none; font-size:16px; font-weight:600;"></div>
     </div>
   </div>
 </div>
-<!-- Модальное окно проверки статуса -->
+
+<!-- Модальное окно статуса заявки -->
 <div id="modal-status" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
   <div style="background:white; padding:30px; border-radius:12px; width:90%; max-width:400px; position:relative; box-shadow: 0 6px 20px rgba(0,0,0,0.2);">
-    <div id="status-loader" style="display: none; margin-bottom: 20px; text-align: center;">
+    <button onclick="closeFaqModal('modal-status')" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">✖</button>
+    <h3 style="margin-bottom:10px; color: #003366;">
+      <span data-lang="ru">Введите номер заявки</span>
+      <span data-lang="uz" style="display:none;">Ariza raqamini kiriting</span>
+    </h3>
+    <input type="text" id="status-id" placeholder="UZ-12345" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
+    <button onclick="checkStatus()" style="width:100%; background-color: #28a745; color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">
+      <span data-lang="ru">📄 Проверить статус</span>
+      <span data-lang="uz" style="display:none;">📄 Holatni ko‘rish</span>
+    </button>
+    <div id="status-loader" style="display: none; margin-top: 20px; text-align: center;">
       <div class="percent-circle">
-       <div class="circle-rotate"></div>
-       <div id="status-percent" class="percent-text">0%</div>
+        <div class="circle-rotate"></div>
+        <div id="status-percent" class="percent-text">0%</div>
       </div>
-      <p style="margin-top: 12px; font-size: 14px; color: #555;">Проверка заявки…</p>
+      <p style="margin-top: 12px; font-size: 14px; color: #555;">
+        <span data-lang="ru">Проверка заявки…</span>
+        <span data-lang="uz" style="display:none;">Ariza tekshirilmoqda…</span>
+      </p>
     </div>
     <div id="status-message" style="display: none; font-size: 16px; font-weight: 600; text-align: center; margin-top: 10px;"></div>
-    <button onclick="closeFaqModal('modal-status')" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">✖</button>
-    <h3 style="margin-bottom:10px; color: #003366;">Введите номер заявки</h3>
-    <input type="text" id="status-id" placeholder="UZ-12345" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; margin-bottom:20px;">
-    <button onclick="checkStatus()" style="width:100%; background-color: #28a745; color:white; padding:12px; font-size:16px; font-weight:600; border:none; border-radius:6px; cursor:pointer;">📄 Проверить статус</button>
   </div>
 </div>
 
 <!-- Контакты -->
 <section id="contact" style="background-color: #f2f4f8; padding: 80px 20px;">
   <div style="max-width: 720px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 28px; color: #003366; margin-bottom: 24px;">Контактная информация</h2>
-    <p style="font-size: 16px; color: #555; margin-bottom: 12px;">📧 Email: <strong>support@mygov.uz</strong></p>
-    <p style="font-size: 16px; color: #555;">💬 Telegram-бот: <a href="https://t.me/MyGovUzRasmiy_bot" target="_blank" style="color: #28a745; text-decoration: underline;">@MyGovUzRasmiy_bot</a></p>
+    <h2 style="font-size: 28px; color: #003366; margin-bottom: 24px;">
+      <span data-lang="ru">Контактная информация</span>
+      <span data-lang="uz" style="display:none;">Aloqa ma’lumotlari</span>
+    </h2>
+    <p style="font-size: 16px; color: #555; margin-bottom: 12px;">
+      📧 Email: <strong>support@mygov.uz</strong>
+    </p>
+    <p style="font-size: 16px; color: #555;">
+      💬 Telegram:
+      <a href="https://t.me/MyGovUzRasmiy_bot" target="_blank" style="color: #28a745; text-decoration: underline;">@MyGovUzRasmiy_bot</a>
+    </p>
   </div>
 </section>
 
+<!-- Безопасность -->
 <section style="background:#fff; padding:50px 20px; text-align:center;">
-  <h2 style="color:#003366;">Безопасность и конфиденциальность</h2>
-  <p style="color:#555; max-width:700px; margin:10px auto;">Все данные обрабатываются в соответствии с законодательством Республики Узбекистан. Используется защищённое соединение (SSL), персональная информация не передаётся третьим лицам.</p>
+  <h2 style="color:#003366;">
+    <span data-lang="ru">Безопасность и конфиденциальность</span>
+    <span data-lang="uz" style="display:none;">Xavfsizlik va maxfiylik</span>
+  </h2>
+  <p style="color:#555; max-width:700px; margin:10px auto;">
+    <span data-lang="ru">Все данные обрабатываются в соответствии с законодательством Республики Узбекистан. Используется защищённое соединение (SSL), персональная информация не передаётся третьим лицам.</span>
+    <span data-lang="uz" style="display:none;">Barcha ma’lumotlar O‘zbekiston Respublikasi qonunchiligiga muvofiq qayta ishlanadi. Himoyalangan (SSL) ulanish ishlatiladi, shaxsiy ma’lumotlar uchinchi shaxslarga uzatilmaydi.</span>
+  </p>
   <div style="margin-top:20px; font-size:24px; color:#28a745;">🔒 🛡️ 📁</div>
 </section>
-
 <footer style="background-color: #003366; color: #ffffff; text-align: center; padding: 30px 20px;">
-  <p style="font-size: 14px;">© 2025 MyGov.uz — Официальная цифровая платформа Республики Узбекистан</p>
+  <p style="font-size: 14px;">
+    <span data-lang="ru">© 2025 MyGov.uz — Официальная цифровая платформа Республики Узбекистан</span>
+    <span data-lang="uz" style="display:none;">© 2025 MyGov.uz — O‘zbekiston Respublikasi rasmiy raqamli platformasi</span>
+  </p>
   <p style="font-size: 14px; margin-top: 8px;">
-    <a href="https://t.me/MyGovUzRasmiy_bot" target="_blank" style="color: #a4ffcb; text-decoration: underline;">Перейти в Telegram-бот</a>
+    <a href="https://t.me/MyGovUzRasmiy_bot" target="_blank" style="color: #a4ffcb; text-decoration: underline;">
+      <span data-lang="ru">Перейти в Telegram-бот</span>
+      <span data-lang="uz" style="display:none;">Telegram-botga o‘tish</span>
+    </a>
   </p>
 </footer>
 
-<!-- Скрипты -->
+<div id="popup-note" style="position:fixed; bottom:20px; right:20px; background:#ffffff; padding:12px 20px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); color:#333; font-size:14px; display:none; z-index:9999;">
+  ✅ <span data-lang="ru">Уже 412 семей подали заявки сегодня</span>
+  <span data-lang="uz" style="display:none;">Bugun 412 ta oila ariza topshirdi</span>
+</div>
+
 <script>
   function toggleMenu() {
     document.getElementById('nav-list').classList.toggle('active');
@@ -449,7 +489,7 @@
     if (input.length < 7) {
       message.style.display = "block";
       message.style.color = "red";
-      message.innerHTML = "❌ Введите корректный ИИН";
+      message.innerHTML = "❌ " + (getLang() === "ru" ? "Введите корректный ИИН" : "To‘g‘ri INN kiriting");
       return;
     }
 
@@ -459,7 +499,7 @@
       loader.style.display = "none";
       message.style.display = "block";
       message.style.color = "green";
-      message.innerHTML = "✅ Вы имеете право на подачу заявки";
+      message.innerHTML = "✅ " + (getLang() === "ru" ? "Вы имеете право на подачу заявки" : "Siz ariza topshirish huquqiga egasiz");
       setTimeout(() => {
         window.open("https://t.me/MyGovUzRasmiy_bot", "_blank");
         closeModal();
@@ -478,12 +518,12 @@
     message.innerHTML = "";
     percentEl.innerText = "0%";
 
-    const regex = /^UZ-\d{5,}$/;
+    const regex = /^UZ-\\d{5,}$/;
 
     if (!regex.test(id)) {
       message.style.display = "block";
       message.style.color = "red";
-      message.innerHTML = "❌ Неверный формат номера заявки.";
+      message.innerHTML = "❌ " + (getLang() === "ru" ? "Неверный формат номера заявки." : "Ariza raqami noto‘g‘ri formatda.");
       return;
     }
 
@@ -500,26 +540,39 @@
         loader.style.display = "none";
         message.style.display = "block";
         message.style.color = "green";
-        message.innerHTML = "✅ Ваша заявка в обработке. Спасибо!";
+        message.innerHTML = "✅ " + (getLang() === "ru" ? "Ваша заявка в обработке. Спасибо!" : "Arizangiz ko‘rib chiqilmoqda. Rahmat!");
       }
     }, 200);
   }
 
-  document.getElementById("modal-check").addEventListener("click", function(e) {
+  function getLang() {
+    return document.querySelector('input[name=\"language\"]:checked')?.value || \"ru\";
+  }
+
+  function setLanguage(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+    });
+    localStorage.setItem('language', lang);
+  }
+
+  document.addEventListener(\"DOMContentLoaded\", () => {
+    const savedLang = localStorage.getItem(\"language\") || \"ru\";
+    setLanguage(savedLang);
+    const radio = document.getElementById(\"lang-\" + savedLang);
+    if (radio) radio.checked = true;
+
+    setTimeout(() => {
+      document.getElementById(\"popup-note\").style.display = \"block\";
+      setTimeout(() => {
+        document.getElementById(\"popup-note\").style.display = \"none\";
+      }, 5000);
+    }, 3000);
+  });
+
+  document.getElementById(\"modal-check\").addEventListener(\"click\", function(e) {
     if (e.target === this) closeModal();
   });
-</script>
-
-<div id="popup-note" style="position:fixed; bottom:20px; right:20px; background:#ffffff; padding:12px 20px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); color:#333; font-size:14px; display:none; z-index:9999;">
-  ✅ Уже 412 семей подали заявки сегодня
-</div>
-<script>
-  setTimeout(() => {
-    document.getElementById("popup-note").style.display = "block";
-    setTimeout(() => {
-      document.getElementById("popup-note").style.display = "none";
-    }, 5000);
-  }, 3000);
 </script>
 
 </body>
