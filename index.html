@@ -97,6 +97,27 @@
       background: linear-gradient(120deg, #003366 0%, #002244 100%);
       color: var(--white);
     }
+    .percent-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 6px solid #e0e0e0;
+  border-top: 6px solid #28a745;
+  animation: spin 1.2s linear infinite;
+  margin: 0 auto;
+  position: relative;
+}
+
+.percent-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #003366;
+  font-weight: bold;
+}
+
 
     .hero h1 {
       font-size: 36px;
@@ -244,7 +265,15 @@
   </div>
 </section>
 <!-- Кнопка проверить статус заявки -->
-<button class="cta-btn" onclick="openFaqModal('modal-status')">📄 Проверить статус заявки</button>
+<div id="status-result" style="margin-top: 20px; text-align: center;">
+  <div id="status-loader" style="display: none;">
+    <div class="percent-circle">
+      <div id="status-percent" class="percent-text">0%</div>
+    </div>
+    <p style="margin-top: 12px; font-size: 14px; color: #555;">Проверка заявки…</p>
+  </div>
+  <div id="status-message" style="display: none; font-size: 16px; font-weight: 600;"></div>
+</div>
 
 <!-- FAQ -->
 <section id="faq" style="background-color: #f2f4f8; padding: 80px 20px;">
@@ -347,20 +376,40 @@
   }
 function checkStatus() {
   const id = document.getElementById("status-id").value.trim();
-  const result = document.getElementById("status-result");
+  const loader = document.getElementById("status-loader");
+  const message = document.getElementById("status-message");
+  const percentEl = document.getElementById("status-percent");
 
-  result.style.color = "red";
+  loader.style.display = "none";
+  message.style.display = "none";
+  message.innerHTML = "";
+  percentEl.innerText = "0%";
 
-  // Без подсказки: просто строго проверяем структуру
-  const regex = /^UZ-\d{5,}$/; // UZ- и минимум 5 цифр
+  const regex = /^UZ-\d{5,}$/;
 
   if (!regex.test(id)) {
-    result.innerText = "❌ Неверный формат номера заявки.";
+    message.style.display = "block";
+    message.style.color = "red";
+    message.innerHTML = "❌ Неверный формат номера заявки.";
     return;
   }
 
-  result.style.color = "green";
-  result.innerText = "✅ Заявка находится в стадии рассмотрения";
+  loader.style.display = "block";
+
+  let percent = 0;
+  const interval = setInterval(() => {
+    percent += Math.floor(Math.random() * 10) + 1;
+    if (percent > 100) percent = 100;
+    percentEl.innerText = percent + "%";
+
+    if (percent === 100) {
+      clearInterval(interval);
+      loader.style.display = "none";
+      message.style.display = "block";
+      message.style.color = "green";
+      message.innerHTML = "✅ Ваша заявка в обработке. Спасибо!";
+    }
+  }, 200);
 }
 
   function checkIIN() {
@@ -418,17 +467,6 @@ function closeFaqModal(id) {
     }, 5000);
   }, 3000);
 </script>
-
-  <div id="modal-status" class="faq-modal">
-  <div class="faq-modal-content">
-    <button class="faq-close" onclick="closeFaqModal('modal-status')">✖</button>
-    <h3>Проверка статуса заявки</h3>
-    <input type="text" id="status-id" placeholder="Введите номер заявки"
-      style="width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;">
-    <button class="cta-btn" style="margin-top: 16px;" onclick="checkStatus()">🔍 Проверить</button>
-    <div id="status-result" style="margin-top: 16px; font-weight: 600;"></div>
-  </div>
-</div>
 
 </body>
 </html>
