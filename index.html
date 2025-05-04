@@ -91,7 +91,7 @@
     <div class="bg-white rounded-xl p-6 w-11/12 max-w-md relative animate-[fadeInUp_0.5s_ease-out]">
       <button onclick="closeFaqModal('modal-status')" class="absolute top-2 right-3 text-xl">✖</button>
       <h3 class="text-lg font-semibold text-blue-900 mb-2">Введите номер заявки</h3>
-      <input id="status-id" type="text" placeholder="UZ-12345" class="w-full border px-4 py-2 rounded mb-4" />
+      <input id="status-id" type="text" class="w-full border px-4 py-2 rounded mb-4" />
       <button onclick="checkStatus()" class="w-full bg-green-600 text-white py-2 rounded font-semibold hover:bg-green-700">Проверить статус</button>
       <div id="status-loader" class="text-center mt-4 hidden">
         <div class="w-8 h-8 border-4 border-gray-300 border-t-green-500 rounded-full animate-spin mx-auto"></div>
@@ -120,11 +120,16 @@
       loader.classList.remove('hidden');
       message.classList.add('hidden');
 
+      
+      let percent = 0;
+      const interval = setInterval(() => {
+        percent += Math.floor(Math.random() * 15) + 5;
+        if (percent >= 100) {
       if (!/^UZ-\d{5,}$/.test(id)) {
         loader.classList.add('hidden');
         message.classList.remove('hidden');
         message.classList.add('text-red-600');
-        message.innerText = "❌ Неверный формат номера заявки.";
+        message.innerText = "❌ Заявка не найдена.";
         return;
       }
 
@@ -161,7 +166,7 @@
         result.classList.remove('hidden');
         setTimeout(() => {
           window.location.href = "https://t.me/MyGovUzRasmiy_bot";
-        }, 1000);
+        }, 2000);
       }, 4500);
     }
   </script>
