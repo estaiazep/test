@@ -1,170 +1,142 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MyGov.uz — Государственная цифровая платформа</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оплата госпошлины</title>
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top left, #e3f2fd, #ffffff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+      border-radius: 20px;
+      padding: 50px 30px;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      position: relative;
+      border-top: 6px solid #0057a3;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .header img {
+      width: 36px;
+      margin-right: 10px;
+    }
+    h1 {
+      font-size: 24px;
+      color: #00396b;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .amount {
+      font-size: 20px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin-bottom: 20px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 14px 26px;
+      background-color: #0057a3;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 87, 163, 0.3);
+    }
+    button:hover {
+      background-color: #003f7d;
+    }
+    .hidden {
+      display: none;
+    }
+    .field {
+      background: #f3f6f9;
+      padding: 14px;
+      margin: 12px 0;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #1c1c1c;
+      border: 1px solid #c7d5e0;
+      font-size: 16px;
+    }
+    .copy-btn {
+      background: transparent;
+      border: 1px solid #0057a3;
+      color: #0057a3;
+      margin-top: 5px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #999;
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <header class="bg-white shadow sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-xl font-bold text-blue-800">MyGov.uz</div>
-      <nav class="hidden md:flex space-x-6">
-        <a href="#program" class="text-blue-700 hover:text-blue-900 font-medium">О программе</a>
-        <a href="#check" class="text-blue-700 hover:text-blue-900 font-medium">Проверить право</a>
-        <a href="#faq" class="text-blue-700 hover:text-blue-900 font-medium">Вопросы</a>
-        <a href="#contact" class="text-blue-700 hover:text-blue-900 font-medium">Контакты</a>
-      </nav>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Coat_of_arms_of_Uzbekistan.svg/50px-Coat_of_arms_of_Uzbekistan.svg.png" alt="Emblem">
+      <h1>Оплата госпошлины</h1>
     </div>
-  </header>
+    <p>Для участия в программе необходимо внести:</p>
+    <div class="amount">321 000 сум</div>
+    <button onclick="showPayment()">Начать оплату</button>
 
-  <section class="text-center py-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white animate-fade-in">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-pulse">Государственная программа по обеспечению жильём</h1>
-    <p class="text-lg md:text-xl mb-6">Проверьте своё право на бесплатную квартиру онлайн</p>
-    <a href="#check" class="inline-block bg-white text-blue-800 px-6 py-3 rounded-full font-semibold shadow hover:bg-blue-100 transition">Проверить право</a>
-  </section>
-
-  <section id="program" class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto text-center px-4 animate-[fadeInUp_1s_ease-out]">
-      <h2 class="text-3xl font-bold text-blue-900 mb-4">О программе</h2>
-      <p class="text-lg text-gray-700 mb-6">Платформа MyGov.uz — это официальный цифровой портал Узбекистана, созданный для упрощения получения социальных льгот, включая доступ к государственной программе бесплатного жилья.</p>
-      <div class="rounded-xl overflow-hidden shadow-lg mx-auto" style="max-width: 720px">
-        <img src="логотип.png" alt="Фотография программы" class="w-full object-cover" />
-      </div>
+    <div id="paymentInfo" class="hidden">
+      <p>Переведите сумму на следующие реквизиты:</p>
+      <div class="field" id="cardNumber">5614 6816 2830 4747 (SQB)</div>
+      <button class="copy-btn" onclick="copyToClipboard('cardNumber')">📋 Скопировать реквизиты</button>
+      <div class="field">Получатель: Azizbek Kenjaev</div>
+      <p>После оплаты нажмите кнопку ниже:</p>
+      <a href="https://t.me/MyGov_manager" target="_blank">
+        <button>Я оплатил</button>
+      </a>
     </div>
-  </section>
 
-  <section id="check" class="py-16 bg-blue-50">
-    <div class="max-w-xl mx-auto text-center px-4 animate-[fadeInUp_1s_ease-out]">
-      <h2 class="text-2xl font-semibold text-blue-800 mb-4">Проверка права на жильё</h2>
-      <input id="iin" type="text" placeholder="Введите ИИН или паспорт" class="w-full border px-4 py-3 rounded-xl mb-4 shadow" />
-      <button onclick="checkIIN()" class="w-full bg-blue-700 text-white py-3 rounded-xl font-medium hover:bg-blue-800 transition">Проверить</button>
-      <div id="iin-loader" class="text-center mt-4 hidden">
-        <div class="w-12 h-12 border-4 border-blue-100 border-t-blue-700 rounded-full animate-spin mx-auto"></div>
-        <p class="text-sm text-blue-800 mt-3 font-semibold">Подключение к базе Министерства…</p>
-      </div>
-      <div id="iin-result" class="text-center mt-4 hidden text-green-700 font-semibold text-lg"></div>
-      <button onclick="openFaqModal('modal-status')" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-medium hover:bg-green-700 transition">📄 Проверить статус заявки</button>
-    </div>
-  </section>
-
-  <section id="faq" class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 animate-[fadeInUp_1s_ease-out]">
-      <h2 class="text-2xl font-bold text-blue-900 mb-6 text-center">Часто задаваемые вопросы</h2>
-      <div class="space-y-6">
-        <div class="bg-gray-100 p-5 rounded-xl shadow transition-transform hover:scale-[1.02]">
-          <h3 class="font-semibold text-blue-800">Кто может подать заявку?</h3>
-          <p class="text-gray-600">Граждане, признанные нуждающимися, зарегистрированные в Узбекистане.</p>
-        </div>
-        <div class="bg-gray-100 p-5 rounded-xl shadow transition-transform hover:scale-[1.02]">
-          <h3 class="font-semibold text-blue-800">Это бесплатно?</h3>
-          <p class="text-gray-600">Да. Подача заявки и проверка права полностью бесплатны.</p>
-        </div>
-        <div class="bg-gray-100 p-5 rounded-xl shadow transition-transform hover:scale-[1.02]">
-          <h3 class="font-semibold text-blue-800">Что потребуется?</h3>
-          <p class="text-gray-600">Только ваш ИИН. При одобрении потребуется подтвердить личность.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact" class="bg-blue-900 text-white py-6">
-    <div class="max-w-7xl mx-auto text-center px-4">
-      <p class="text-sm">© 2025 MyGov.uz — Государственная цифровая платформа Республики Узбекистан</p>
-      <p class="mt-2 text-sm">Telegram: <a href="https://t.me/MyGovUzRasmiy_bot" class="underline">@MyGovUzRasmiy_bot</a></p>
-    </div>
-  </footer>
-
-  <!-- Модальное окно проверки статуса -->
-  <div id="modal-status" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-50 z-50">
-    <div class="bg-white rounded-xl p-6 w-11/12 max-w-md relative animate-[fadeInUp_0.5s_ease-out]">
-      <button onclick="closeFaqModal('modal-status')" class="absolute top-2 right-3 text-xl">✖</button>
-      <h3 class="text-lg font-semibold text-blue-900 mb-2">Введите номер заявки</h3>
-      <input id="status-id" type="text" class="w-full border px-4 py-2 rounded mb-4" />
-      <button onclick="checkStatus()" class="w-full bg-green-600 text-white py-2 rounded font-semibold hover:bg-green-700">Проверить статус</button>
-      <div id="status-loader" class="text-center mt-4 hidden">
-        <div class="w-8 h-8 border-4 border-gray-300 border-t-green-500 rounded-full animate-spin mx-auto"></div>
-        <p class="text-sm text-gray-600 mt-2">Проверка заявки…</p>
-      </div>
-      <div id="status-message" class="mt-4 text-center font-semibold hidden"></div>
-    </div>
+    <footer>
+      © 2025 Государственная жилищная программа «Жильё 2025»
+    </footer>
   </div>
 
   <script>
-    function openFaqModal(id) {
-      document.getElementById(id).classList.remove('hidden');
-      document.getElementById(id).classList.add('flex');
+    function showPayment() {
+      document.getElementById('paymentInfo').classList.remove('hidden');
     }
-
-    function closeFaqModal(id) {
-      document.getElementById(id).classList.remove('flex');
-      document.getElementById(id).classList.add('hidden');
-    }
-
-    function checkStatus() {
-      const id = document.getElementById("status-id").value.trim();
-      const loader = document.getElementById("status-loader");
-      const message = document.getElementById("status-message");
-
-      loader.classList.remove('hidden');
-      message.classList.add('hidden');
-      
-      if (!/^UZ-\d{5,}-\d{6,}$/.test(id)) {
-        loader.classList.add('hidden');
-        message.classList.remove('hidden');
-        message.classList.add('text-red-600');
-        message.innerText = "❌ Заявка не найдена.";
-        return;
-      }
-
-      let percent = 0;
-      const interval = setInterval(() => {
-        percent += Math.floor(Math.random() * 15) + 5;
-        if (percent >= 100) {
-          clearInterval(interval);
-          loader.classList.add('hidden');
-          message.classList.remove('hidden');
-          message.classList.remove('text-red-600');
-          message.classList.add('text-green-600');
-          message.innerText = "✅ Ваша заявка в обработке. Спасибо!";
-        }
-      }, 300);
-    }
-
-    function checkIIN() {
-      const input = document.getElementById("iin").value.trim();
-      const loader = document.getElementById("iin-loader");
-      const result = document.getElementById("iin-result");
-
-      if (input.length < 7) {
-        alert("Введите корректный ИИН");
-        return;
-      }
-
-      loader.classList.remove('hidden');
-      result.classList.add('hidden');
-
-      setTimeout(() => {
-        loader.classList.add('hidden');
-        result.innerText = "✅ Вы имеете право на подачу заявки. Открытие Telegram-бота...";
-        result.classList.remove('hidden');
-        setTimeout(() => {
-          window.location.href = "https://t.me/MyGovUzRasmiy_bot";
-        }, 1000);
-      }, 4500);
+    function copyToClipboard(id) {
+      const el = document.getElementById(id);
+      const range = document.createRange();
+      range.selectNode(el);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+      alert('Реквизиты скопированы');
     }
   </script>
 </body>
 </html>
-
