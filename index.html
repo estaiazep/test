@@ -2,161 +2,126 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Оплата госпошлины</title>
+  <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
-      margin: 0;
-      padding: 0;
+    }
+    .language-buttons {
       display: flex;
+      gap: 1rem;
       justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      margin-top: 2rem;
     }
-    .container {
-      background: #fff;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-      border-radius: 18px;
-      padding: 40px 32px;
-      width: 100%;
-      max-width: 460px;
-      text-align: center;
-      position: relative;
-      border-top: 8px solid #0057a3;
-    }
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .header img {
-      width: 40px;
-      margin-right: 10px;
-    }
-    h1 {
-      font-size: 22px;
-      color: #00396b;
-      margin-bottom: 8px;
-    }
-    .subtitle {
-      font-size: 15px;
-      color: #555;
-      margin-bottom: 20px;
+    .section {
+      display: none;
     }
     .amount-box {
       background: #fbe9e7;
       color: #d84315;
-      font-size: 20px;
+      font-size: 1.5rem;
       font-weight: bold;
-      padding: 14px;
-      border-radius: 12px;
-      margin: 10px 0 20px;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
       border: 1px solid #f8bbd0;
-    }
-    .btn-primary {
-      background-color: #0057a3;
-      color: white;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      margin-top: 20px;
-      box-shadow: 0 4px 12px rgba(0, 87, 163, 0.2);
-    }
-    .btn-primary:hover {
-      background-color: #003f7d;
+      text-align: center;
     }
     .field-box {
       background: #f1f8ff;
-      padding: 14px;
+      padding: 1rem;
       border: 1px solid #cce4ff;
-      border-radius: 10px;
-      margin: 12px 0;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
       font-weight: bold;
       color: #1c1c1c;
     }
     .copy-btn {
-      margin-top: 5px;
-      background: #ffffff;
+      margin-top: 0.5rem;
+      background: #fff;
       border: 1px solid #0057a3;
       color: #0057a3;
-      padding: 6px 12px;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 14px;
-    }
-    .info-text {
-      font-size: 14px;
-      color: #555;
-      margin-top: 12px;
-    }
-    .highlight {
-      font-weight: 600;
-      color: #d84315;
+      font-size: 0.9rem;
     }
     footer {
-      margin-top: 30px;
-      font-size: 12px;
-      color: #aaa;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Language Selection -->
-    <div id="langSelect">
-      <h2>Выберите язык / Tilni tanlang</h2>
-      <button class="btn-lang" onclick="selectLang('ru')">🇷🇺 Русский</button>
-      <button class="btn-lang" onclick="selectLang('uz')">🇺🇿 Oʻzbekcha</button>
+
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>MyGov</strong></li>
+    </ul>
+    <ul>
+      <li><a href="#">Главная</a></li>
+      <li><a href="#">Контакты</a></li>
+      <li><a href="https://t.me/MyGov_manager" role="button">Менеджер</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+
+    <h2>Выберите язык / Tilni tanlang</h2>
+    <div class="language-buttons">
+      <button onclick="selectLang('ru')">🇷🇺 Русский</button>
+      <button onclick="selectLang('uz')">🇺🇿 Oʻzbekcha</button>
     </div>
 
-    <!-- Russian Section -->
-    <div id="sectionRu" class="section">
-      <h2>Оплата госпошлины</h2>
-      <p>Для участия в программе необходимо внести:</p>
-      <div class="amount">321 000 сум</div>
+    <section id="sectionRu" class="section">
+      <hgroup>
+        <h3>Оплата госпошлины</h3>
+        <p>Для участия в программе необходимо внести:</p>
+      </hgroup>
+      <div class="amount-box">321 000 сум</div>
       <div class="field-box" id="cardRu">5614 6816 2830 4747 (SQB)</div>
       <button class="copy-btn" onclick="copyToClipboard('cardRu')">📋 Скопировать реквизиты</button>
       <div class="field-box">Получатель: Azizbek Kenjaev</div>
       <p>После перевода отправьте чек менеджеру в Telegram:</p>
-      <a href="https://t.me/MyGov_manager" class="btn-primary" target="_blank">✅ Я оплатил</a>
-    </div>
+      <a href="https://t.me/MyGov_manager" class="contrast" target="_blank">✅ Я оплатил</a>
+    </section>
 
-    <!-- Uzbek Section -->
-    <div id="sectionUz" class="section">
-      <h2>Davlat boji to‘lovi</h2>
-      <p>Dasturda ishtirok etish uchun quyidagi miqdorda to‘lov talab qilinadi:</p>
-      <div class="amount">321 000 so'm</div>
+    <section id="sectionUz" class="section">
+      <hgroup>
+        <h3>Davlat boji to‘lovi</h3>
+        <p>Dasturda ishtirok etish uchun quyidagi miqdorda to‘lov talab qilinadi:</p>
+      </hgroup>
+      <div class="amount-box">321 000 so'm</div>
       <div class="field-box" id="cardUz">5614 6816 2830 4747 (SQB)</div>
       <button class="copy-btn" onclick="copyToClipboard('cardUz')">📋 Rekvizitni nusxalash</button>
       <div class="field-box">Qabul qiluvchi: Azizbek Kenjaev</div>
       <p>To‘lovdan so‘ng chekni Telegram orqali yuboring:</p>
-      <a href="https://t.me/MyGov_manager" class="btn-primary" target="_blank">✅ To‘lov qildim</a>
-    </div>
-  </div>
+      <a href="https://t.me/MyGov_manager" class="contrast" target="_blank">✅ To‘lov qildim</a>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <small><a href="#">Политика конфиденциальности</a> • <a href="#">Поддержка</a></small>
+  </footer>
 
   <script>
     function selectLang(lang) {
-      document.getElementById('langSelect').style.display = 'none';
-      if (lang === 'ru') document.getElementById('sectionRu').style.display = 'block';
-      if (lang === 'uz') document.getElementById('sectionUz').style.display = 'block';
+      document.querySelectorAll('.section').forEach(el => el.style.display = 'none');
+      document.getElementById(`section${lang.charAt(0).toUpperCase() + lang.slice(1)}`).style.display = 'block';
     }
 
     function copyToClipboard(id) {
-      const el = document.getElementById(id);
-      const range = document.createRange();
-      range.selectNode(el);
-      window.getSelection().removeAllRanges();
-      window.getSelection().addRange(range);
-      document.execCommand('copy');
-      window.getSelection().removeAllRanges();
-      alert('Скопировано в буфер обмена');
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text)
+        .then(() => alert("Скопировано в буфер обмена"))
+        .catch(() => alert("Ошибка копирования"));
     }
   </script>
+
 </body>
 </html>
