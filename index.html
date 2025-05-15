@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Платёжный центр | Госпошлина</title>
+  <title>Оплата госпошлины</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
+      background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
       margin: 0;
       padding: 0;
       display: flex;
@@ -16,128 +16,109 @@
       min-height: 100vh;
     }
     .container {
-      background: #fff;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-      border-radius: 18px;
-      padding: 40px 32px;
-      width: 100%;
-      max-width: 460px;
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       text-align: center;
-      position: relative;
-      border-top: 8px solid #0057a3;
+      max-width: 420px;
+      width: 100%;
     }
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .header img {
-      width: 40px;
-      margin-right: 10px;
-    }
-    h1 {
+    h2 {
       font-size: 22px;
-      color: #00396b;
-      margin-bottom: 8px;
-    }
-    .subtitle {
-      font-size: 15px;
-      color: #555;
+      color: #004d40;
       margin-bottom: 20px;
     }
-    .amount-box {
-      background: #fbe9e7;
-      color: #d84315;
-      font-size: 20px;
-      font-weight: bold;
-      padding: 14px;
-      border-radius: 12px;
-      margin: 10px 0 20px;
-      border: 1px solid #f8bbd0;
-    }
-    .btn-primary {
-      background-color: #0057a3;
+    .btn-lang, .btn-primary {
+      display: block;
+      background-color: #00897b;
       color: white;
       border: none;
-      padding: 14px 28px;
-      border-radius: 10px;
+      padding: 14px 24px;
+      margin: 10px auto;
       font-size: 16px;
+      border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s;
-      margin-top: 20px;
-      box-shadow: 0 4px 12px rgba(0, 87, 163, 0.2);
     }
-    .btn-primary:hover {
-      background-color: #003f7d;
+    .btn-lang:hover, .btn-primary:hover {
+      background-color: #00695c;
+    }
+    .section {
+      display: none;
+    }
+    .amount {
+      font-size: 20px;
+      font-weight: bold;
+      color: #d84315;
+      margin: 20px 0 10px;
     }
     .field-box {
       background: #f1f8ff;
-      padding: 14px;
+      padding: 12px;
       border: 1px solid #cce4ff;
-      border-radius: 10px;
-      margin: 12px 0;
+      border-radius: 8px;
+      margin: 10px 0;
       font-weight: bold;
       color: #1c1c1c;
     }
     .copy-btn {
       margin-top: 5px;
       background: #ffffff;
-      border: 1px solid #0057a3;
-      color: #0057a3;
+      border: 1px solid #00897b;
+      color: #00897b;
       padding: 6px 12px;
       border-radius: 8px;
       cursor: pointer;
       font-size: 14px;
     }
-    .info-text {
-      font-size: 14px;
-      color: #555;
-      margin-top: 12px;
-    }
-    .highlight {
-      font-weight: 600;
-      color: #d84315;
-    }
-    footer {
-      margin-top: 30px;
-      font-size: 12px;
-      color: #aaa;
+    a.btn-primary {
+      text-decoration: none;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <img src="IMG_6512.PNG" alt="Emblem">
-      <h1>Оплата госпошлины</h1>
+    <!-- Language Selection -->
+    <div id="langSelect">
+      <h2>Выберите язык / Tilni tanlang</h2>
+      <button class="btn-lang" onclick="selectLang('ru')">🇷🇺 Русский</button>
+      <button class="btn-lang" onclick="selectLang('uz')">🇺🇿 Oʻzbekcha</button>
     </div>
-    <div class="subtitle">Для продолжения участия в программе необходимо внести единоразовую пошлину:</div>
-    <div class="amount-box">321 000 сум</div>
-    <button class="btn-primary" onclick="showPayment()">Перейти к оплате</button>
 
-    <div id="paymentInfo" class="hidden">
-      <div class="field-box" id="cardNumber">5614 6816 2830 4747 (SQB)</div>
-      <button class="copy-btn" onclick="copyToClipboard('cardNumber')">📋 Скопировать реквизиты</button>
+    <!-- Russian Section -->
+    <div id="sectionRu" class="section">
+      <h2>Оплата госпошлины</h2>
+      <p>Для участия в программе необходимо внести:</p>
+      <div class="amount">321 000 сум</div>
+      <div class="field-box" id="cardRu">5614 6816 2830 4747 (SQB)</div>
+      <button class="copy-btn" onclick="copyToClipboard('cardRu')">📋 Скопировать реквизиты</button>
       <div class="field-box">Получатель: Azizbek Kenjaev</div>
-      <div class="info-text">
-        После перевода обязательно сохраните <span class="highlight">чек</span> и отправьте его менеджеру в Telegram.
-        <br><br>
-        <a href="https://t.me/MyGov_manager" target="_blank">
-          <button class="btn-primary">✅ Я оплатил — отправить чек</button>
-        </a>
-      </div>
+      <p>После перевода отправьте чек менеджеру в Telegram:</p>
+      <a href="https://t.me/MyGov_manager" class="btn-primary" target="_blank">✅ Я оплатил</a>
     </div>
 
-    <footer>
-      © 2025 Государственная жилищная программа «Жильё 2025»
-    </footer>
+    <!-- Uzbek Section -->
+    <div id="sectionUz" class="section">
+      <h2>Davlat boji to‘lovi</h2>
+      <p>Dasturda ishtirok etish uchun quyidagi miqdorda to‘lov talab qilinadi:</p>
+      <div class="amount">321 000 so'm</div>
+      <div class="field-box" id="cardUz">5614 6816 2830 4747 (SQB)</div>
+      <button class="copy-btn" onclick="copyToClipboard('cardUz')">📋 Rekvizitni nusxalash</button>
+      <div class="field-box">Qabul qiluvchi: Azizbek Kenjaev</div>
+      <p>To‘lovdan so‘ng chekni Telegram orqali yuboring:</p>
+      <a href="https://t.me/MyGov_manager" class="btn-primary" target="_blank">✅ To‘lov qildim</a>
+    </div>
   </div>
 
   <script>
-    function showPayment() {
-      document.getElementById('paymentInfo').classList.remove('hidden');
+    function selectLang(lang) {
+      document.getElementById('langSelect').style.display = 'none';
+      if (lang === 'ru') document.getElementById('sectionRu').style.display = 'block';
+      if (lang === 'uz') document.getElementById('sectionUz').style.display = 'block';
     }
+
     function copyToClipboard(id) {
       const el = document.getElementById(id);
       const range = document.createRange();
@@ -146,7 +127,7 @@
       window.getSelection().addRange(range);
       document.execCommand('copy');
       window.getSelection().removeAllRanges();
-      alert('Реквизиты скопированы');
+      alert('Скопировано в буфер обмена');
     }
   </script>
 </body>
