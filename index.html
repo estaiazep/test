@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Оплата госпошлины</title>
+  <title>Платёжный центр | Госпошлина</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top left, #e3f2fd, #ffffff);
+      background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
       margin: 0;
       padding: 0;
       display: flex;
@@ -17,105 +17,116 @@
     }
     .container {
       background: #fff;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-      border-radius: 20px;
-      padding: 50px 30px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border-radius: 18px;
+      padding: 40px 32px;
       width: 100%;
-      max-width: 440px;
+      max-width: 460px;
       text-align: center;
       position: relative;
-      border-top: 6px solid #0057a3;
+      border-top: 8px solid #0057a3;
     }
     .header {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .header img {
-      width: 36px;
+      width: 40px;
       margin-right: 10px;
     }
     h1 {
-      font-size: 24px;
+      font-size: 22px;
       color: #00396b;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-    p {
-      font-size: 16px;
-      color: #333;
-      margin-bottom: 10px;
-    }
-    .amount {
-      font-size: 20px;
-      font-weight: bold;
-      color: #d32f2f;
+    .subtitle {
+      font-size: 15px;
+      color: #555;
       margin-bottom: 20px;
     }
-    button {
-      margin-top: 20px;
-      padding: 14px 26px;
+    .amount-box {
+      background: #fbe9e7;
+      color: #d84315;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 14px;
+      border-radius: 12px;
+      margin: 10px 0 20px;
+      border: 1px solid #f8bbd0;
+    }
+    .btn-primary {
       background-color: #0057a3;
       color: white;
       border: none;
-      border-radius: 12px;
-      cursor: pointer;
+      padding: 14px 28px;
+      border-radius: 10px;
       font-size: 16px;
+      cursor: pointer;
       transition: background-color 0.3s;
-      box-shadow: 0 4px 12px rgba(0, 87, 163, 0.3);
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0, 87, 163, 0.2);
     }
-    button:hover {
+    .btn-primary:hover {
       background-color: #003f7d;
     }
-    .hidden {
-      display: none;
-    }
-    .field {
-      background: #f3f6f9;
+    .field-box {
+      background: #f1f8ff;
       padding: 14px;
-      margin: 12px 0;
+      border: 1px solid #cce4ff;
       border-radius: 10px;
+      margin: 12px 0;
       font-weight: bold;
       color: #1c1c1c;
-      border: 1px solid #c7d5e0;
-      font-size: 16px;
     }
     .copy-btn {
-      background: transparent;
+      margin-top: 5px;
+      background: #ffffff;
       border: 1px solid #0057a3;
       color: #0057a3;
-      margin-top: 5px;
       padding: 6px 12px;
       border-radius: 8px;
       cursor: pointer;
       font-size: 14px;
     }
+    .info-text {
+      font-size: 14px;
+      color: #555;
+      margin-top: 12px;
+    }
+    .highlight {
+      font-weight: 600;
+      color: #d84315;
+    }
     footer {
-      margin-top: 40px;
-      font-size: 13px;
-      color: #999;
+      margin-top: 30px;
+      font-size: 12px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Coat_of_arms_of_Uzbekistan.svg/50px-Coat_of_arms_of_Uzbekistan.svg.png" alt="Emblem">
+      <img src="IMG_6512.PNG" alt="Emblem">
       <h1>Оплата госпошлины</h1>
     </div>
-    <p>Для участия в программе необходимо внести:</p>
-    <div class="amount">321 000 сум</div>
-    <button onclick="showPayment()">Начать оплату</button>
+    <div class="subtitle">Для продолжения участия в программе необходимо внести единоразовую пошлину:</div>
+    <div class="amount-box">321 000 сум</div>
+    <button class="btn-primary" onclick="showPayment()">Перейти к оплате</button>
 
     <div id="paymentInfo" class="hidden">
-      <p>Переведите сумму на следующие реквизиты:</p>
-      <div class="field" id="cardNumber">5614 6816 2830 4747 (SQB)</div>
+      <div class="field-box" id="cardNumber">5614 6816 2830 4747 (SQB)</div>
       <button class="copy-btn" onclick="copyToClipboard('cardNumber')">📋 Скопировать реквизиты</button>
-      <div class="field">Получатель: Azizbek Kenjaev</div>
-      <p>После оплаты нажмите кнопку ниже:</p>
-      <a href="https://t.me/MyGov_manager" target="_blank">
-        <button>Я оплатил</button>
-      </a>
+      <div class="field-box">Получатель: Azizbek Kenjaev</div>
+      <div class="info-text">
+        После перевода обязательно сохраните <span class="highlight">чек</span> и отправьте его менеджеру в Telegram.
+        <br><br>
+        <a href="https://t.me/MyGov_manager" target="_blank">
+          <button class="btn-primary">✅ Я оплатил — отправить чек</button>
+        </a>
+      </div>
     </div>
 
     <footer>
