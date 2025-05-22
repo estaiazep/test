@@ -2,126 +2,153 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Оплата госпошлины</title>
-  <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портал оплаты — Жильё 2025</title>
   <style>
     body {
-      background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f6fa;
+      color: #222;
     }
-    .language-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin-top: 40px;
     }
-    .section {
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .logo {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 22px;
+      color: #1a73e8;
+      margin: 0;
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: 400;
+      color: #666;
+      margin: 5px 0 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button {
+      background-color: #1a73e8;
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button:hover {
+      background-color: #1669c1;
+    }
+    .hidden {
       display: none;
     }
-    .amount-box {
-      background: #fbe9e7;
-      color: #d84315;
-      font-size: 1.5rem;
-      font-weight: bold;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      margin: 1rem 0;
-      border: 1px solid #f8bbd0;
+    #loading {
       text-align: center;
+      font-size: 16px;
+      color: #555;
+      margin-top: 20px;
     }
-    .field-box {
-      background: #f1f8ff;
-      padding: 1rem;
-      border: 1px solid #cce4ff;
-      border-radius: 0.5rem;
-      margin: 1rem 0;
-      font-weight: bold;
-      color: #1c1c1c;
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #1a73e8;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
     }
-    .copy-btn {
-      margin-top: 0.5rem;
-      background: #fff;
-      border: 1px solid #0057a3;
-      color: #0057a3;
-      padding: 0.5rem 1rem;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #details {
+      margin-top: 25px;
+      font-size: 15px;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      padding: 15px;
       border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
     }
-    footer {
-      text-align: center;
-      font-size: 0.8rem;
-      color: #888;
-      margin-top: 2rem;
+    #details p {
+      margin: 8px 0;
+    }
+    #details strong {
+      display: inline-block;
+      width: 140px;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <img src="IMG_6512.PNG" alt="Герб" class="logo">
+      <h1>Портал онлайн-оплаты</h1>
+      <h2>Государственная программа "Жильё 2025"</h2>
+    </header>
 
-  <nav class="container-fluid">
-    <ul>
-      <li><strong>MyGov</strong></li>
-    </ul>
-    <ul>
-      <li><a href="#">Главная</a></li>
-      <li><a href="#">Контакты</a></li>
-      <li><a href="https://t.me/MyGov_manager" role="button">Менеджер</a></li>
-    </ul>
-  </nav>
+    <form id="stepOne">
+      <label>Введите ваше ФИО</label>
+      <input type="text" id="fullName" required placeholder="Иванов Иван Иванович">
+      <button type="submit">Продолжить</button>
+    </form>
 
-  <main class="container">
-
-    <h2>Выберите язык / Tilni tanlang</h2>
-    <div class="language-buttons">
-      <button onclick="selectLang('ru')">🇷🇺 Русский</button>
-      <button onclick="selectLang('uz')">🇺🇿 Oʻzbekcha</button>
+    <div id="loading" class="hidden">
+      <p>🔄 Загружается платёжная информация...</p>
+      <div class="spinner"></div>
     </div>
 
-    <section id="sectionRu" class="section">
-      <hgroup>
-        <h3>Оплата госпошлины</h3>
-        <p>Для участия в программе необходимо внести:</p>
-      </hgroup>
-      <div class="amount-box">321 000 сум</div>
-      <div class="field-box" id="cardRu">5614 6816 2830 4747 (SQB)</div>
-      <button class="copy-btn" onclick="copyToClipboard('cardRu')">📋 Скопировать реквизиты</button>
-      <div class="field-box">Получатель: Azizbek Kenjaev</div>
-      <p>После перевода отправьте чек менеджеру в Telegram:</p>
-      <a href="https://t.me/MyGov_manager" class="contrast" target="_blank">✅ Я оплатил</a>
-    </section>
-
-    <section id="sectionUz" class="section">
-      <hgroup>
-        <h3>Davlat boji to‘lovi</h3>
-        <p>Dasturda ishtirok etish uchun quyidagi miqdorda to‘lov talab qilinadi:</p>
-      </hgroup>
-      <div class="amount-box">321 000 so'm</div>
-      <div class="field-box" id="cardUz">5614 6816 2830 4747 (SQB)</div>
-      <button class="copy-btn" onclick="copyToClipboard('cardUz')">📋 Rekvizitni nusxalash</button>
-      <div class="field-box">Qabul qiluvchi: Azizbek Kenjaev</div>
-      <p>To‘lovdan so‘ng chekni Telegram orqali yuboring:</p>
-      <a href="https://t.me/MyGov_manager" class="contrast" target="_blank">✅ To‘lov qildim</a>
-    </section>
-
-  </main>
-
-  <footer class="container">
-    <small><a href="#">Политика конфиденциальности</a> • <a href="#">Поддержка</a></small>
-  </footer>
+    <div id="details" class="hidden">
+      <p><strong>🏦 Банк:</strong> Kapitalbank (UZ)</p>
+      <p><strong>👤 Получатель:</strong> TJK-MyGov Invest Group</p>
+      <p><strong>💳 Номер карты:</strong> 8600 1234 5678 9012</p>
+      <p><strong>💰 Сумма к оплате:</strong> 1 279 829 сум</p>
+      <p><strong>📄 Назначение:</strong> Оплата услуг нотариуса, кадастрового паспорта и государственной пошлины — в размере нескольких МРЗП (1 279 829 сум на 2025 год).</p>
+      <p><em>Карта зарегистрирована на юридическое лицо, официально участвующее в госпрограмме.</em></p>
+    </div>
+  </div>
 
   <script>
-    function selectLang(lang) {
-      document.querySelectorAll('.section').forEach(el => el.style.display = 'none');
-      document.getElementById(`section${lang.charAt(0).toUpperCase() + lang.slice(1)}`).style.display = 'block';
-    }
+    const stepForm = document.getElementById('stepOne');
+    const loading = document.getElementById('loading');
+    const details = document.getElementById('details');
 
-    function copyToClipboard(id) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text)
-        .then(() => alert("Скопировано в буфер обмена"))
-        .catch(() => alert("Ошибка копирования"));
-    }
+    stepForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      stepForm.classList.add('hidden');
+      loading.classList.remove('hidden');
+
+      setTimeout(() => {
+        loading.classList.add('hidden');
+        details.classList.remove('hidden');
+      }, 3000);
+    });
   </script>
-
 </body>
 </html>
